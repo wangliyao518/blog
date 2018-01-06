@@ -4,12 +4,12 @@ title: "python training"
 date: 2018-01-06 18:00:40
 image: 'http://res.cloudinary.com/dm7h7e8xj/image/upload/c_fill,h_399,w_760/v1503153729/golpe_ghb84o.jpg'
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-category: 'life'
+category: 'training'
 tags:
-- life
+- training
 - tips
-twitter_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-introduction: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+twitter_text: python knowledge sharing.
+introduction: we will reveal python basic knowledge
 ---
 
 Cas sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
@@ -31,32 +31,29 @@ HTML defines a long list of available inline tags, a complete list of which can 
 
 Most of these elements are styled by browsers with few modifications on our part.
 
-# Heading 1
+# python basic
 
-## Heading 2
+## python variable
 
-### Heading 3
+### python list
 
-#### Heading 4
+#### how to operate list 
 
-Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+you can use the append, extend, insert function to operate list 
 
 ## Code
 
-Cum sociis natoque penatibus et magnis dis `code element` montes, nascetur ridiculus mus.
+this is python code example
 
-```js
-// Example can be run directly in your JavaScript console
+```python
+// Example can be run directly in your python console
 
-// Create a function that takes two arguments and returns the sum of those arguments
-var adder = new Function("a", "b", "return a + b");
+// append new value to a list
+a = []
+a.append(10)
 
-// Call the function
-adder(2, 6);
-// > 8
-```
 
-Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.
+
 
 ## Lists
 
