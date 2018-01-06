@@ -2,7 +2,7 @@ title: Web
 description: leo's blog
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-minimal
+theme: jekyll-theme-architect
 
 gems:
   - jekyll-mentions
