@@ -2,7 +2,7 @@
 layout: post
 title: "python training"
 date: 2018-01-06 18:00:40
-image: 'https://github.com/wangliyao518/web/blob/gh-pages/assets/img/97cce39fa7f1bfe59fe245c4ff92620c.png'
+image: 'https://raw.githubusercontent.com/wangliyao518/web/gh-pages/assets/img/97cce39fa7f1bfe59fe245c4ff92620c.png'
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 category: 'training'
 tags:
