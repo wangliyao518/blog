@@ -2,7 +2,7 @@
 title: leo's blog | A blog for leo
 email: wangliyao518@gmail.com
 description: Some text about your blog.
-baseurl: "/web" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "http://wangliyao518.github.io" # the base hostname & protocol for your site
 google_analytics: "UA-XXXXXXXX-X"
 
