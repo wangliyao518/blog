@@ -12,11 +12,37 @@ twitter_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 introduction: Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It has easy-to-use tabular test data syntax and it utilizes the keyword-driven testing approach.Its testing capabilities can be extended by test libraries implemented either with Python or Java, and users can create new higher-level keywords from existing ones using the same syntax that is used for creating test cases.
 ---
 
-Cas sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
+Intuitively when we take a persion we will describe head, neck, the upper part of the body, hand, the lower part of the body, leg, the robot is the same, it have head(settings), neck(variables), hand(suite setup and test setup), the upper part the the body(test cases), the lower part of the boday(keywords), leg(suite teardown and test teardown)
+当我们谈论一个人时，我们会直观的用头，脖子，上半身，手，下半身，脚来描绘他。robot类似，它也有头（就是settings部分），脖子（variables部分），手（suite setup和test setup），上半身（test cases部分），下半身（keywords部分），腿（suite teardown 和test teardown）
 
-> Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
+> ***settings***
+>Library    Process  #just for example
+>suite setup
+>suite teardown
+>test setup
+>test teardown
+>
+>
+>***variables***
+>${GLOBAL_VAR_1}    this is global variable example 
+>
+>
+>***test cases***
+>This is first example case
+>    user_own_example_keyword_1
+>
+>This is seconde example case
+>    user_own_example_keyword_2
+>
+>
+>***keywords***
+>user_own_example_keyword_1
+>    log    'this is my example keyword 1'
+>
+>user_own_example_keyword_2
+>    log    'this is my example keyword 2'
 
-Etiam porta **sem malesuada magna** mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+
 
 ## Inline HTML elements
 
