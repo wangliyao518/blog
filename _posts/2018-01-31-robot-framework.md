@@ -8,9 +8,12 @@ category: 'trainning'
 tags:
 - trainning
 - tips
-twitter_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-introduction: Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It has easy-to-use tabular test data syntax and it utilizes the keyword-driven testing approach.Its testing capabilities can be extended by test libraries implemented either with Python or Java, and users can create new higher-level keywords from existing ones using the same syntax that is used for creating test cases.
+twitter_text: Robot Framework itself is open source software released under Apache License 2.0,nowadays sponsored by Robot Framework Foundation.
+introduction: Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD)
 ---
+
+Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It has easy-to-use tabular test data syntax and it utilizes the keyword-driven testing approach.Its testing capabilities can be extended by test libraries implemented either with Python or Java, and users can create new higher-level keywords from existing ones using the same syntax that is used for creating test cases.
+
 
 Intuitively when we take a persion we will describe head, neck, the upper part of the body, hand, the lower part of the body, leg, the robot is the same, it have head(settings), neck(variables), hand(suite setup and test setup), the upper part the the body(test cases), the lower part of the boday(keywords), leg(suite teardown and test teardown)。
 
