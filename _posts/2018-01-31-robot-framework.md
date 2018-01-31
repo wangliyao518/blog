@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "robot framwork introduction"
-date: 2017-09-10 12:26:40
+date: 2018-01-30 22:26:40
 image: 'https://raw.githubusercontent.com/wangliyao518/web/gh-pages/assets/img/timg.jpg'
 description: Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It has easy-to-use tabular test data syntax and it utilizes the keyword-driven testing approach.
 category: 'trainning'

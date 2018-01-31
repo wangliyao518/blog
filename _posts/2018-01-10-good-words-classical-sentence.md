@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "good-words ou filter: good-words?"
-date: 2017-08-14 22:55:45
+title: "good words and classical-sentence"
+date: 2018-01-10 23:20:45
 image: 'http://res.cloudinary.com/dm7h7e8xj/image/upload/c_scale,w_760/v1502757949/o-sombra_xyw4wq.jpg'
-description: good words and classical-sentence.
-category: 'talk'
+description: good words and classical-sentence in daily life and dialog.
+category: 'dialog'
 tags:
 - dialog
 - learn
