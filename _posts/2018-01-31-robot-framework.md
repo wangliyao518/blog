@@ -54,6 +54,60 @@ Intuitively when we take a persion we will describe head, neck, the upper part o
   </tbody>
 </table>
 
+## robot case structure -- settings
+<table>
+  <thead>
+    <tr>
+      <th>Settings</th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Documentaion</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Suite setup</td>
+      <td>log</td>
+      <td>this is suite setup step</td>
+    </tr>
+    <tr>
+      <td>Suite teardown</td>
+      <td>log</td>
+      <td>this is suite teardown</td>
+    </tr>
+     <tr>
+      <td>test setup</td>
+      <td>log</td>
+      <td>this is test setup</td>
+    </tr>
+     <tr>
+      <td>test teardown</td>
+      <td>log</td>
+      <td>this is test teardown</td>
+    </tr>
+     <tr>
+      <td>Force Tags</td>
+      <td>LTE</td>
+      <td>FSMR3</td>
+    </tr>
+     <tr>
+      <td>Resource</td>
+      <td>interface.robot</td>
+      <td>#import robot library</td>
+    </tr>
+     <tr>
+      <td>Library</td>
+      <td>ta_files</td>
+      <td>#import python library</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## robot case example
 
