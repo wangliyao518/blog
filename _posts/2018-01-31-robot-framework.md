@@ -19,6 +19,42 @@ Intuitively when we take a persion we will describe head, neck, the upper part o
 
 当我们谈论一个人时，我们会直观的用头，脖子，上半身，手，下半身，脚来描绘他。robot类似，它也有头（就是settings部分），脖子（variables部分），手（suite setup和test setup），上半身（test cases部分），下半身（keywords部分），腿（suite teardown 和test teardown）
 
+## robot case structure
+<table>
+  <thead>
+    <tr>
+      <th>Table Name</th>
+      <th>Used for</th>
+      <th>Aliases</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>Keywords Table</td>
+      <td>creating user keyword from existing lower-level keywords</td>
+      <td>keyword, keywords, userkeyword, userkeywords</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Settings Table</td>
+      <td>import test libraries, resource files and variable files, defining metadata for test suite and test case</td>
+      <td>setting, settings, metadata</td>
+    </tr>
+    <tr>
+      <td>Variable Table</td>
+      <td>defining variables that can use anywhere in test datas</td>
+      <td>variable, variables</td>
+    </tr>
+    <tr>
+      <td>Test Case Table</td>
+      <td>creating test case from avaliable keywords</td>
+      <td>Test Case, Test Cases</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## robot case example
 
 ```robot
@@ -138,39 +174,7 @@ Quisque consequat sapien eget quam rhoncus, sit amet laoreet diam tempus. Aliqua
 
 Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td>Totals</td>
-      <td>21</td>
-      <td>23</td>
-    </tr>
-  </tfoot>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>10</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>4</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Charlie</td>
-      <td>7</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
+
 
 Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
 
