@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Diga olá para o TRCurrencyTextField: Um componente com valor."
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+title: "python clean code."
+date: 2018-02-04 15:00:40
+description: Clean code is well-designed, well-written software.
 image: 'https://raw.githubusercontent.com/wangliyao518/blog/gh-pages/assets/img/timg%20(3).jpg'
 category: 'tutorial'
 tags:
@@ -9,14 +10,15 @@ tags:
 - blog
 - tutorial
 twitter_text: how to write clean python code.
-introduction: Welcome to CleanCode -- a website for developers who want to write good code. Clean code is well-designed, well-written software. Clean code communicates well to the external customer and the internal customer; that is, to users who wish to accomplish a task with it, and to developers who wish to develop, maintain, revise, enhance or just plain understand it. This site is here to convey experiences learned--to empower you to help others learn--and to provide a plethora of free libraries in several languages. [clean code website](http://cleancode.sourceforge.net/)
+introduction: Welcome to CleanCode -- a website for developers who want to write good code. 
 ---
 
-Cas sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
+Clean code is well-designed, well-written software. Clean code communicates well to the external customer and the internal customer; that is, to users who wish to accomplish a task with it, and to developers who wish to develop, maintain, revise, enhance or just plain understand it. This site is here to convey experiences learned--to empower you to help others learn--and to provide a plethora of free libraries in several languages. [clean code website](http://cleancode.sourceforge.net/)
 
-> Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
 
-Etiam porta **sem malesuada magna** mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+> python clean code
+
+clean code **how to wirte python clean code**
 
 ## Inline HTML elements
 
