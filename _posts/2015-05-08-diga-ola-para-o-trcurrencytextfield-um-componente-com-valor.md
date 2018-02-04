@@ -2,14 +2,14 @@
 layout: post
 title: "Diga olá para o TRCurrencyTextField: Um componente com valor."
 description: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-image: 'http://res.cloudinary.com/dm7h7e8xj/image/upload/c_scale,w_760/v1504807365/now-you-see-me_wtv89q.jpg'
-category: 'mobile'
+image: 'https://raw.githubusercontent.com/wangliyao518/blog/gh-pages/assets/img/timg%20(3).jpg'
+category: 'tutorial'
 tags:
-- component
-- ios
-- cocoapods
-twitter_text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-introduction: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+- clean code
+- blog
+- tutorial
+twitter_text: how to write clean python code.
+introduction: Welcome to CleanCode -- a website for developers who want to write good code. Clean code is well-designed, well-written software. Clean code communicates well to the external customer and the internal customer; that is, to users who wish to accomplish a task with it, and to developers who wish to develop, maintain, revise, enhance or just plain understand it. This site is here to convey experiences learned--to empower you to help others learn--and to provide a plethora of free libraries in several languages. [clean code website](http://cleancode.sourceforge.net/)
 ---
 
 Cas sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
@@ -126,4 +126,4 @@ Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur e
 
 -----
 
-Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a>
+Want to see something else added? <a href="https://github.com/wangliyao518/blog/issues/new">Open an issue.</a>
