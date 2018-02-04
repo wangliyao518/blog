@@ -10,19 +10,16 @@ tags:
 - blog
 - tutorial
 twitter_text: how to write clean python code.
-introduction: Welcome to CleanCode -- a website for developers who want to write good code. 
+introduction: Welcome to CleanCode -- a website for developers who want to write good code.
 ---
 
 Clean code is well-designed, well-written software. Clean code communicates well to the external customer and the internal customer; that is, to users who wish to accomplish a task with it, and to developers who wish to develop, maintain, revise, enhance or just plain understand it. This site is here to convey experiences learned--to empower you to help others learn--and to provide a plethora of free libraries in several languages. [clean code website](http://cleancode.sourceforge.net/)
 
 
-> python clean code
 
-clean code **how to wirte python clean code**
+## open close
 
-## Inline HTML elements
 
-HTML defines a long list of available inline tags, a complete list of which can be found on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
 
 - **To bold text**, use `<strong>`.
 - *To italicize text*, use `<em>`.
@@ -86,43 +83,7 @@ Quisque consequat sapien eget quam rhoncus, sit amet laoreet diam tempus. Aliqua
 ![placeholder](https://placehold.it/400x200 "Medium example image")
 ![placeholder](https://placehold.it/200x200 "Small example image")
 
-## Tables
 
-Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td>Totals</td>
-      <td>21</td>
-      <td>23</td>
-    </tr>
-  </tfoot>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>10</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>4</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Charlie</td>
-      <td>7</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
 
 Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
 
