@@ -1,6 +1,6 @@
 # Site Settings
 title: leo's blog | A blog for leo
-email: wangliyao518@gmail.com
+email: liyao518wang@gmail.com
 description: Some text about your blog.
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "http://wangliyao518.github.io" # the base hostname & protocol for your site
@@ -8,7 +8,7 @@ google_analytics: "UA-XXXXXXXX-X"
 
 # User Settings
 username: leo
-user_description: Some text about you.
+user_description: focus on python and robot develop.
 disqus_username: disqus_username
 
 # Social Media
