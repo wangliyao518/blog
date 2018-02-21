@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "python training"
+title: "python basic training"
 date: 2018-01-06 18:00:40
 image: 'https://raw.githubusercontent.com/wangliyao518/web/gh-pages/assets/img/97cce39fa7f1bfe59fe245c4ff92620c.png'
-description: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+description: talk is cheap, show me the code    -- Linus Torvalds
 category: 'training'
 tags:
 - training
@@ -12,47 +12,35 @@ twitter_text: python knowledge sharing.
 introduction: we will reveal python basic knowledge
 ---
 
-Cas sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
 
-> Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
 
-Etiam porta **sem malesuada magna** mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+## Setup Python Development Environment
 
-## Inline HTML elements
 
-HTML defines a long list of available inline tags, a complete list of which can be found on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+### Install Python
+* on Linux, it should be already there
+* on Windows, download it from http://python.org
 
-- **To bold text**, use `<strong>`.
-- *To italicize text*, use `<em>`.
-- Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use `<abbr>`, with an optional `title` attribute for the full phrase.
-- Citations, like <cite>&mdash; Thiago Rossener</cite>, should use `<cite>`.
-- <del>Deleted</del> text should use `<del>` and <ins>inserted</ins> text should use `<ins>`.
-- Superscript <sup>text</sup> uses `<sup>` and subscript <sub>text</sub> uses `<sub>`.
+### Choose an Editor
+* Vim / Emacs / sublime user, keep going
+* If you have no choice, PyCharm may be good for you
+* Recommended features:
+  * expand TAB to SPACE automatically
+  * syntax check
 
-Most of these elements are styled by browsers with few modifications on our part.
-
-# python basic
-
-## python variable
-
-### python list
-
-#### how to operate list 
-
-you can use the append, extend, insert function to operate list 
-
-## Code
+### print hello world
 
 this is python code example
 
 ```python
-// Example can be run directly in your python console
+#print hello world
+#it's very simple in python
+print "hello world"
 
-// append new value to a list
-a = []
-a.append(10)
+# you also can use like
+print 'hello world'
 
-
+```
 
 
 ## Lists
