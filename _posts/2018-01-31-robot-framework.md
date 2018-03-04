@@ -19,6 +19,11 @@ Intuitively when we take a persion we will describe head, neck, the upper part o
 
 当我们谈论一个人时，我们会直观的用头，脖子，上半身，手，下半身，脚来描绘他。robot类似，它也有头（就是settings部分），脖子（variables部分），手（suite setup和test setup），上半身（test cases部分），下半身（keywords部分），腿（suite teardown 和test teardown）
 
+
+正如前文所说， it has easy-to-use tabular test data syntax，所以我们可以按照表格式方式来书写robot case， 自然我们就可以把robot case方便的保存为excel格式，html格式，txt格式， robot格式（其实robot格式和txt格式都是文本格式，我们推荐使用后缀为.robot格式） 
+
+from tabular syntax view，robot structure like below：
+
 ## robot case structure
 <table>
   <thead>
@@ -108,6 +113,7 @@ Intuitively when we take a persion we will describe head, neck, the upper part o
 </table>
 
 
+A whole robot case like below: 
 
 ## robot case example
 
@@ -157,6 +163,12 @@ user_own_example_keyword_2
     log    'this is my example keyword 2'
 
 ```
+
+some people often tell me that they need ride or other tools to write robot case, otherwise they don't know how to write robot case, from the above example case, we can see that the robot case is just a text file, very easy to write, you can use vim, notepad and any others text editor. aannouncements need stick such as library some libraries, define the test case and keywords, you should at lease keep 2 blank between keyword and arguments, we recommend 4 blank(like python, robot also a language, write robot case is also programming)
+
+经常有人告诉我他们一定要ride或者其它一些智能编写工具来编写robot case， 没有这些工具，他们好像就不知道怎么编写robot case了， 从上面的example case来看， robot case其实很简单，它就是一个文本文件， 你可以用vim，notepad或者任意的文本工具来编写， robot case的声明需要置顶，如library某个库，定义全局变量，定义robot case和定义keyword，这些都是置顶书写，在keyword和参数间，你至少应该保持2个空格以上，我们推荐一直使用4个空格（和python保持一直，良好的编程习惯，robot本身也是语言，开发robot case也是编程行为）。
+
+
 
 
 
