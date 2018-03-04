@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "robot framwork introduction"
+title: "robot framwork basic introduction"
 date: 2018-01-30 22:26:40
 image: 'https://raw.githubusercontent.com/wangliyao518/web/gh-pages/assets/img/timg.jpg'
 description: Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD). It has easy-to-use tabular test data syntax and it utilizes the keyword-driven testing approach.
@@ -170,7 +170,13 @@ some people often tell me that they need ride or other tools to write robot case
 
 
 
-## robot framework (parser+runner)
+## How it works?
+* The customer write tests as text tables.
+* The framework interprets the tables, the glue code passes the values to the test code, the test code exercises the business logic.
+* The customer documents the test with free text between or in the tables (which is ignored by the framework).
+![placeholder](http://res.cloudinary.com/wangliyao518/image/upload/v1520132760/robot_architecture_weuhmy.png "Large example image")
+
+
 * Test data and directives telling how the data is used taken out of the test scripts
 * Directives and the associated test data drive test execution
 * All tests can be executed by one test runner – no need for multiple driver scripts
@@ -178,17 +184,11 @@ some people often tell me that they need ride or other tools to write robot case
 * Platform and interface agnostic
 * System under test
 
+![placeholder](http://res.cloudinary.com/wangliyao518/image/upload/v1520134692/parser_runner_xmjkkb.png "Large example image")
+
+
+## Detailed view of Robot framework doing(T E S)
 ![placeholder](http://res.cloudinary.com/wangliyao518/image/upload/e_blackwhite/v1520132829/detail_view_of_robot_opngz3.png "Large example image")
-![placeholder](https://placehold.it/400x200 "Medium example image")
-![placeholder](https://placehold.it/200x200 "Small example image")
-
-## Tables
-
-Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-
-
-Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
 
 -----
 
