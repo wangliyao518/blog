@@ -57,6 +57,30 @@ The real reason is that the random number from random. nextInt() in Java is a ps
 A lot of experts have appeared on the above. what I want to say is if we only change the programming algorithm, we will be able to solve all of you 'concerns and doubts. Is the lottery procedure really fair?
 上面已经出现了很多专家，大家分析的也非常有道理， 但我想说的是如果真的只改变编程算法，就一定能解决大家所有人的担心和疑惑，抽奖程序就真的公平了吗？
 
+
+Many times we were MR zhuge after things happen, We found the pit now, and then our code did run away from the pit, but who could guarantee that there was no hidden pit? More importantly, even if there is no bug in the code, who is able to convince people who are not winning the prize that the software has no "back door".
+很多时候我们都是事后诸葛, 我们发现现在有的这个坑，然后我们代码的确逃离了这个坑，但谁又能保证没有隐藏着的坑呢,更重要的是，即便代码中没有任何bug，谁又能让没中奖的人们信服这个软件没“后门”
+
+
+We still can't let everyone believe that this software is fair, because if the software designers really want to cheat, can make the actual operation of the program is certainly not out of the code, you can specify who want the first prize in the prize, but not low to like big loophole appears above - and a name in two (operation you want to go to, I will no longer show here again)
+我们还是不能让大家相信这个软件是公正的，因为如果软件设计者真心想要作弊，可以让实际运行的程序肯定不是公布出来的代码，可以指定想让谁中一等奖就中奖，而且不会低级到像上面出现的大漏洞--同时一个名字中两次（操作方式大家各自去想，我就不再这里添堵了）
+
+So no matter who the author is, no matter how delicate the algorithm is, the problem is still unsolved. As a professional software company, as a RCA and EDA experts, it seems that no real solution is yet.
+所以无论换成作者是谁，无论他的算法多么的精妙，问题还是没有解决，而作为专业的软件公司，作为做惯了RCA和EDA的兄弟们，好像依旧没想到真正的解决手段
+
+In fact, there are many ways to solve the problem, we need to understand the code, technology is not a panacea, not a ready-made panacea can cure all diseases, so not only towards the technology in view of the problem, we must first see from the form, from the process point of view (this process is not only have to do UT, is not completely follow TDD, ATDD), since the code for who do not trust, then put a few scattered in different groups of people who do not know each other, or is the development, testing, implementation of separation, or at the same time some people developed the same product and finally we only choose the best one,This is the process of reducing the probability of cheating, like the government, only the supervision of all kinds of systems, the people believe that the heart of justice will improve.
+其实问题的解决有很多手段，首先我们要明白，技术代码不是万能的，不是灵丹妙药能治百病，所以不能只朝着技术在看问题，我们首先要从形式上看，从流程上看（这个流程已不单纯只是有没有做UT，是不是完全遵循TDD， ATDD），既然代码放给谁去做都不放心，那放给几个分散在不同组的互相不认识的人来做呢，又或者是开发，测试，执行分离，又或者是同时要几个人开发出来的同样产品，最终工会一起选取最优的，这就是从流程上已经让作弊减少概率，就如政府一样，只有监督各种体制健全，权利分散，百姓相信公正之心才会提升
+
+Secondly, since Python and git are so powerful now, we can also choose the python language to complete this procedure, using git to do the scene management, from the GIT version of clone when the draw, run the Python code site, everyone can clearly see the source code to run together, but also in the lottery before the GIT warehouse with all. Everyone can participate in the review, you can also manage the docker program with the public warehouse, completely transparent and increase the difficulty of the "back door", and notes the same reason, the high degree of difficulty,
+其次，既然python 和git 现在这么强大，我们也可以选择python这样的语言来完成这样的程序，用git做管理，抽奖时现场从git clone 版本，现场运行python代码，所有人都可以清楚看到源码运行起来，而且在抽奖前，这个git仓库贡献出来，所有人都可以参与review，也可以用公共的docker仓库来管理程序，完全的透明公开又增加了“后门”的难度，这个就和纸币一样的道理，难度系数高了，假币也就少了
+
+
+Finally, it also has a lot to do program design point, all programmers are smart people, have more good ideas than me, I will no longer give comments, the above comments is just my opinion, if have some wrong please tell me and forgive me
+最后，程序的设计中的确也有很多可做之点，各位程序员们都是聪明之人，想出的点子都比我多，我就不再“班门弄斧”了，以上言论都是出自我的愚见，不对之处，贻笑大方之处还望海涵
+
+
+
+
 -----
 
 Want to see something else added? <a href="https://github.com/wangliyao518/blog/issues/new">Open an issue.</a>
