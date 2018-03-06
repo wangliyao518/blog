@@ -44,15 +44,18 @@ In order to prove their innocence, the developer actively published the source c
 Naturally, the developer apologizes for not having verified enough, and for having added a validation check
 自然，开发者也道歉自己没验证充分，道歉自己应该加个合法性校验
 
-We're a professional software company, and a lot of comments continue to flow
-面对开发者的解释，大家对“无内幕”表示认可，毕竟我们是专业的软件公司，很多的意见继续扑面而来
+We're a professional software company, and a lot of comments continue to come， too many people still question the algorithms in the code, diagram as below
+面对开发者的解释，大家对“无内幕”表示认可，毕竟我们是专业的软件公司，很多的意见继续扑面而来, 大家还是质疑代码中的算法, 图示如下：
+![placeholder](http://res.cloudinary.com/wangliyao518/image/upload/v1520338606/comments1_r26tav.png "comments 1 image")
+![placeholder](http://res.cloudinary.com/wangliyao518/image/upload/v1520338606/comments2_wqvh8k.png "comments 2 image")
 
 The real reason is that the random number from random. nextInt() in Java is a pseudo-random number, and the sequence is the same every time a new Random is created. If the list is unchanged and the probability of repetition is very high, the raffle is too unreasonable
 实际原因是用的java里的random.nextInt()得到的随机数是伪随机数，每次new Random之后产生的序列都是一样的，如果名单没有变化，产生重复的概率非常高，这个抽奖程序写的太不合理了
 
 
 ## how to solve --how（怎么解决？）
-
+A lot of experts have appeared on the above. what I want to say is if we only change the programming algorithm, we will be able to solve all of you 'concerns and doubts. Is the lottery procedure really fair?
+上面已经出现了很多专家，大家分析的也非常有道理， 但我想说的是如果真的只改变编程算法，就一定能解决大家所有人的担心和疑惑，抽奖程序就真的公平了吗？
 
 -----
 
