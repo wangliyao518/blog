@@ -2,7 +2,7 @@
 layout: post
 title: "some intresting bug and robot keyword bug"
 description: what's the bug and did you find some bugs in your daily software? what's the robot keyword bug? is't the same thing with software bug? in this article I'll show you.
-image: 'http://res.cloudinary.com/dm7h7e8xj/image/upload/c_scale,w_760/v1504807239/morpheus_xdzgg1.jpg'
+image: 'https://raw.githubusercontent.com/wangliyao518/blog/gh-pages/assets/img/bug.jpg'
 category: 'bug'
 tags:
 - bug

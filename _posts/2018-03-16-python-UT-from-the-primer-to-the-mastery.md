@@ -2,7 +2,7 @@
 layout: post
 title: "python UT from the primer to the mastery"
 description: do you know UT? do you know how to write a good UT?
-image: 'http://res.cloudinary.com/dm7h7e8xj/image/upload/c_scale,w_760/v1504807658/barney-stinson_eqt7kc.jpg'
+image: 'https://raw.githubusercontent.com/wangliyao518/blog/gh-pages/assets/img/unittest.jpg'
 category: 'python'
 tags:
 - python
