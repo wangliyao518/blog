@@ -11,18 +11,36 @@ tags:
 image: 'https://res.cloudinary.com/dm7h7e8xj/image/upload/c_fill,h_399,w_760/v1501102987/sketch-fuel_eiwjbz.png'
 twitter_text: write robot keyword with oop.
 introduction: Robot itself is also a programming language. It is a language for users to write demand stories. Demand story is like narration. It's a process oriented thing. We can easily write process case. Can robot also be written to object - oriented? Yes. It can be.
----
+-----
 
 
 
-## Inline HTML elements
+## requirement
+implement a keyword to execute shell command on remote linux pc
+实现一个可以在远程linux系统的pc上执行shell 命令的keyword
 
 
+## Procedural programming 
+it's a very simple requirement, we can implement this task easily with procedural programming
+上面的需求非常简单, 我们可以用面向过程的方式简单的实现, 代码如下:
 
-# Heading 1
+```python
+#interface.py
 
-## Heading 2
+import paramiko
+def execute_shell_command(cmd, host, username, password):
+    ssh = paramiko.SSHClient()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.connect(host, 22, username, password)
+    stdin,stdout,stderr = ssh.exec_command(cmd)
+    outmsg, errmsg = stdout.read(),stderr.read()
+    return outmsg
+    ssh.close()
 
+```
+
+## Object Oriented Programming
+the above code can work well, 
 
 ## Code
 
