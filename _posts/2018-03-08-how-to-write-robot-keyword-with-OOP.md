@@ -113,25 +113,133 @@ def execute_local_command(cmd):
 
 
 ## Object Oriented Programming
-the above code can work well, and it seems we only change a little code after new requirement comming, but there have a problem that is user only want change local pc execute command logical but also change the execute command on remote host code, so after we change code we need test the get_ethernet_ip_address keyword in two scenario (local and remote)
-上面的代码可以很好的工作, 看上去新的需求来后我们也只是很少的改动就可以实现功能, 但这里有一个问题:用户只是希望get_ethernet_ip_address这个keyword在本地执行时不需要ssh, 但我们确也改动了在remote执行的部分(有的人可能会说,我远程执行没改动啊, 还是调用的execute_shell_command啊, 但加入if else后就代表着这个代码已有改动,更何况python是动态脚本语言),所以在我们的代码改动后, 我们需要测试本地和远程两种场景.
+the above code can work well, and it seems we only change a little code after new requirement comming, but there have a problem that is user only want change local pc execute command logical but also change the execute command on remote host code, so after we change code we need test the get_ethernet_ip_address keyword in two scenario (local and remote), how about use OOP to implement the above feature? let's see the code
+上面的代码可以很好的工作, 看上去新的需求来后我们也只是很少的改动就可以实现功能, 但这里有一个问题:用户只是希望get_ethernet_ip_address这个keyword在本地执行时不需要ssh, 但我们确也改动了在remote执行的部分(有的人可能会说,我远程执行没改动啊, 还是调用的execute_shell_command啊, 但加入if else后就代表着这个代码已有改动,更何况python是动态脚本语言),所以在我们的代码改动后, 我们需要测试本地和远程两种场景.如果换成面向对象会怎么样? 请看代码
 
-## Code
+```python
+
+# interface.py
+
+from imp import HostAccess, SshConnection
 
 
-```js
-// Example can be run directly in your JavaScript console
+class Interface(object):
 
-// Create a function that takes two arguments and returns the sum of those arguments
-var adder = new Function("a", "b", "return a + b");
+    def __init__(self):
+        self.ssh_con = None
 
-// Call the function
-adder(2, 6);
-// > 8
+    def setup(self, **kwargs):
+        host_ip = kwargs.get('host')
+        username = kwargs.get('username')
+        password = kwargs.get('password')
+        self.ssh_con = SshConnection(host_ip, username, password)
+        self.ssh_con.connect()
+        self.access_obj = HostAccess(self.ssh_con)
+
+    def get_ethernet_ip_address(self, **kwargs):
+        return self.access_obj.get_lmp_ip_addr()
+
+    def teardown(self, **kwargs):
+        self.ssh_con.disconnect()
+
+
+# imp.py
+import paramiko
+
+class HostAccess(object):
+
+    def __init__(self, connection):
+        self.con = connection
+
+    def get_ethernet_ip_addr(self, eth_name):
+        result = ""
+        stderr, stdout = self.con.exec_command("ifconfig {}".format(eth_name))
+        pattern = r"(inet addr:\d{1,4}.\d{1,4}.\d{1,4}.\d{1,4})"
+        for line in stdout.split('\n'):
+            ret = re.search(pattern, line)
+            if ret:
+                result = ret.groups()[0]
+        return result
+
+
+class SshConnection(object):
+    def __init__(self, host, port=22, username, password):
+        self.host = host
+        self.port = port
+        self.username = username
+        self.password = password
+        self.con = None
+
+    def connect(self):
+        self.con = paramiko.SSHClient()
+        self.con.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        self.con.connect(self.host, self.port, self.username, self.password)
+
+    def exec_command(self, command):
+        stdin, stdout, stderr = self.con.exec_command(command)
+        ret = stdout.read()
+        return ret
+
+    def disconnect(self):
+        self.con.close()
+
 ```
+we just use 3 class to implement this requirement, when user want local command not need ssh we only need add one class, the code as below:
+上面就是我们用OOP之后写的代码,代码行数是多了,我们同时用了3个类来完成这个任务, 当本地执行命令不需要ssh时,我们只需要增加一个class, 代码如下
 
+```python
+# imp.py
+import subprocess
+
+class LocalSshConnection(object):
+
+    def __init__(self):
+        pass
+
+    def connect(self):
+        pass
+
+    def disconnect(self):
+        pass
+
+    def exec_command(self, command):
+        """ Execute command on locally.
+
+        :param String command: command string
+        """
+        result = subprocess.check_output(cmd)
+        return result
+
+```
+after we add this LocalSshConnection class, we only need change interface.py import sentence as below:
+
+```python
+from imp import HostAccess, SshConnection, LocalSshConnection
+
+class Interface(object):
+
+    def __init__(self):
+        self.ssh_con = None
+
+    def setup(self, **kwargs):
+        host_ip = kwargs.get('host')
+        username = kwargs.get('username')
+        password = kwargs.get('password')
+        ssh_con_dict = {'127.0.0.1': LocalSshConnection, 'localhost': LocalSshConnection}
+        self.ssh_con = ssh_con_dict.get(host_ip, SshConnection)
+        self.ssh_con.connect()
+        self.access_obj = HostAccess(self.ssh_con)
+
+    def get_ethernet_ip_address(self, **kwargs):
+        return self.access_obj.get_lmp_ip_addr()
+
+    def teardown(self, **kwargs):
+        self.ssh_con.disconnect()
+
+```
+上面的代码我们虽然用字典的方式消除掉了if else语句, 但细心的读者会发现,我们之前的面向过程其实也可以用这个字典方式消除掉if else, 而我们的面向对象好像代码更长呢? 那它究竟的好处是什么呢? 从上面的面向过程和面向对象我们能清晰的看出, 我们需求变动的是ssh连接的变化, 而通过连接去执行对应命令和解析这块算法的地方是不需要变化的, 但面向过程中导致了这块地方也跟着变动了, 如果有了UT代码,这部分也需要跟着变化的,我们的需求不需要这块变动,显然是不合理的. 而面向对象后, 我们明显应对变化更灵活了,这就是OOP的好处!
 
 
 -----
 
-Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a>
+Want to see something else added? <a href="https://github.com/wangliyao518/blog/issues/new">Open an issue.</a>
