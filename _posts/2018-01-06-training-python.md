@@ -20,6 +20,11 @@ introduction: we will reveal python basic knowledge
 ### Install Python
 * on Linux, it should be already there
 * on Windows, download it from http://python.org
+* python -version
+```python
+print sys.version_info
+print sys.version
+```
 
 ### Choose an Editor
 * Vim / Emacs / sublime user, keep going
@@ -28,7 +33,54 @@ introduction: we will reveal python basic knowledge
   * expand TAB to SPACE automatically
   * syntax check
 
-### print hello world
+## Work in Python  
+  
+### print log
+* print in python 2
+* print in python 3
+* print str(A)
+* pdb https://docs.python.org/3/library/pdb.html
+* Logging  https://docs.python.org/3/library/logging.html
+
+
+## Standard Type
+### Int
+* 10, 0b10, 010, 0x10
+* int()
+- long() in python 2
+* size of int
+- 32/64 bits in python 2
+- No limit in Python 3
+
+
+### String
+
+* char in sequences
+```python
+a = "Hello World"
+b = 'Python is groovy'
+c = "This is a long string \
+    which is splitted in two lines"
+
+d = '''Content-type: text/html
+<h1> Hello World </h1>
+Click <a href="http://www.python.org">here</a>.
+'''
+```
+
+
+
+
+### List
+
+
+### Tuple
+
+
+### Dictionary
+
+
+
 
 this is python code example
 
