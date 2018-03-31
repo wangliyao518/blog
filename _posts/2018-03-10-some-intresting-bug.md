@@ -63,7 +63,22 @@ Overall look, whether or not he has the feeling of gild the lily. I also on the 
 
 
 
+让我们再来看一个画蛇添足的bug, 软件巨头微软的bug--计算器.
+Let's take a look at another bug, the bug of the software giant Microsoft, the calculator.
+很多朋友可能并未发现这个其实也是bug, 当你输入1 + 1 = 之后, 没错,答案是2, 但当你再次输入=(或者enter确认键)之后, 答案变成了3, 这个变成了连加功能. 有问题吗? 程序员习惯了连加功能了.并不认为这个有什么不妥, 文档说明书也没有, 所以也并没有说这个该有还是不该有.所以这个是不是bug只能有最后一个原则来判断了, 应该由测试人员拿着"挑剔"的用户角度来看这个问题.
+Many friends may not have found that this is a bug, when you enter 1 + 1 =, that's right, the answer is 2, but when you enter again after confirmed (or the enter key), the answer becomes 3, this became even function. Is there a problem?Programmers accustomed to even added functionality. Don't think what is wrong with this, the document instructions also have no, so also did not say this should or shouldn't have. So this is a bug there can only be the last one principle to judge, should be determined by the tester with a "critical" user point of view of the problem.
 
+首先, 用户真有连加这个功能需求吗? 可能有的人会回答有.是的, 大千世界, 就如人是用左手还是右手, 正如微软自己的产品左右键, 他们也是以大多数的使用习惯为默认值,然后有一个可以切换的菜单, 显然大多数人是没有连加功能需求的, 计算器也没有做这个切换设置.
+First of all, does the user really need to add this feature?May answer with some people. Yes, the boundless universe, is with your left hand or right hand, and like the person as key about Microsoft's own products, they are also used in the most as a default value, then have a menu, you can switch clearly most of people did not even add the functional requirements, the calculator also didn't do the switch Settings.
+
+再则, 它这个连加功能是可以一直加下去的(这样也才叫连加), 但用户如果真有比如10次连加需求, 恐怕也没多少人敢用这个功能吧?因为很容易就记不清楚自己练按了几次加功能，很容易就算错了，　何况微软的这个计算器，　连续加１０次本身来可以用这样的方式来输入：　３＋２＊１０＝，　这样的按键顺序实现这个功能，效率既高又不容易出错．
+In addition, it can be continuously added to this function, but if the user really has 10 times to add demand, I'm afraid not many people would dare to use it.Because it is easy to remember their practice according to the function of a few times add, easily even if wrong, the calculator, and Microsoft itself to add 10 times in a row can use this way to input: 3 + 2 * = 10, such key order to realize the function, efficiency is high and not easy to get wrong.
+
+最后这个连加可能反而带来问题，这是真实的例子，如果某人的键盘比如老化反应迟钝，急性子的人很容易就按了２次回车，　又或者一个人在按界面上的＝，而另外旁观一人觉得慢帮助按下了回车（他可能是觉得这个人不知道回车也是等号），这样反而会导致运算结果出错．可能因此自己给别人多算了很多钱出去都不知道．涉及钱了这个ｂｕｇ就不是小问题了．
+finally this bug can bring big problem, this is the real example, if someone's keyboard such as slow aging, impatient person is easy to hit the enter 2 times, or a person = on the interface, and the other on the sidelines a person feel slow help press enter (he probably felt that the people don't know the return is the equal sign), so it will lead to wrong operation results.Maybe I gave myself a lot of money to go out and I don't know.It's not a trivial matter when it comes to money.
+
+不得不提的是, 安卓系统上计算器=就不具有连加功能, 看来高手的确在民间. 而微软和ipone的计算器都具有连加功能, 也不得不说大公司的计算器功能就是强大
+Have to mention is that the android calculator = don't have even add function, seems to be superior in folk indeed. And Microsoft and iphone calculator have even added functionality, also have to say big companies' calculator function is "real powerful"
 
 -----
 
