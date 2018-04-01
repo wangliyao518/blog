@@ -25,11 +25,12 @@ Generic test automation framework
 FURPS+ is an acronym representing a model for classifying software quality attributes(functional and non-functional requirements) It can be used variously as a feature solicitation checklist, a requirements categorization scheme, or a peer (design / code) review plan.
 
 FURPS+
-[Functionality]
+- Functionality
 * Feature Sets
 * Capabilities
 * Security
-[Usability]
+
+- Usability
 * Human factors
 * Aesthetics
 * Consistency in the user interface
@@ -37,11 +38,13 @@ FURPS+
 * Wizards and agents
 * User documentation
 * Training materials
-[Reliability]
+
+-Reliability
 * Frequency and Severity of failure
 * Recoverability
 * Predictability
-[Performance]
+
+-Performance
 * Speed
 * Efficiency
 * Availability
@@ -50,7 +53,8 @@ FURPS+
 * Respond time
 * Recover time
 * Resource usage
-[Supportability]
+
+- Supportability
 * Testability
 * Extensibility
 * Adaptability
@@ -60,11 +64,11 @@ FURPS+
 * Serviceability
 * Installability
 * localizability
-[+]
+- pluse
 * Design Requirement
 * Implementation Requirement
 * Interface Requirement
 * Physical Requirement
 -----
 
-Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a>
+Want to see something else added? <a href="https://github.com/wangliyao518/blog/issues/new">Open an issue.</a>
