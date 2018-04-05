@@ -27,6 +27,7 @@ ATDD活动中团队需要就需求定义出期望的质量标准和验收细则�
 
 - ATDD must be based on test automation and continuous integration.ATDD一定是基于测试自动化和持续集成的。
 
+![ATDD CYCLE](https://raw.githubusercontent.com/wangliyao518/blog/gh-pages/assets/img/ATDD_CYCLEpng.png)
 
 和TDD的“红-绿-重构”类似，ATDD的流程也是类似的思路（如上图）。
 - 讨论澄清阶段
@@ -70,14 +71,6 @@ adder(2, 6);
 ```
 
 
-
-## Images
-
-Quisque consequat sapien eget quam rhoncus, sit amet laoreet diam tempus. Aliquam aliquam metus erat, a pulvinar turpis suscipit at.
-
-![placeholder](https://placehold.it/800x400 "Large example image")
-![placeholder](https://placehold.it/400x200 "Medium example image")
-![placeholder](https://placehold.it/200x200 "Small example image")
 
 
 

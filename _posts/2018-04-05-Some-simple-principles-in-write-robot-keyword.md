@@ -17,17 +17,6 @@ introduction: we know clean code when we coding, what's the principles of write 
 
 # How To Write Good Robot Case
 
-Generic test automation framework
-- Keyword-driven testing
-- Suitable for both ¡°normal¡± test automation and ATDD
-- Open Source www.robotframework.org
-- Sponsored by Nokia Siemens Networks
-- Active development and growing community
-
-## FURPS
-FURPS+ is an acronym representing a model for classifying software quality attributes(functional and non-functional requirements) It can be used variously as a feature solicitation checklist, a requirements categorization scheme, or a peer (design / code) review plan.
-
-
 
 -----
 
