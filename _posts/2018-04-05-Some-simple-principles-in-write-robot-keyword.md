@@ -24,10 +24,10 @@ Generic test automation framework
 - Sponsored by Nokia Siemens Networks
 - Active development and growing community
 
-## FURPS+
+## FURPS
 FURPS+ is an acronym representing a model for classifying software quality attributes(functional and non-functional requirements) It can be used variously as a feature solicitation checklist, a requirements categorization scheme, or a peer (design / code) review plan.
 
-FURPS+
+FURPS
 - Functionality
     1. Feature Sets
     2. Capabilities
@@ -73,6 +73,9 @@ FURPS+
     2. Implementation Requirement
     3. Interface Requirement
     4. Physical Requirement
+
+
+
 -----
 
 Want to see something else added? <a href="https://github.com/wangliyao518/blog/issues/new">Open an issue.</a>
