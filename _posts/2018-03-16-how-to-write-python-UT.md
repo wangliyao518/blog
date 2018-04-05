@@ -121,11 +121,6 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-## patch
-
-
-
-## senior example
 
 
 
