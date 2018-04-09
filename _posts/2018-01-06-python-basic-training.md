@@ -15,8 +15,8 @@ introduction: we will reveal python basic knowledge
 
 # Python Basic
 
-![python](https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg)
-### <center>--by wang liyao (leo.y.wang@nokia-sbell.com)<center> ###
+
+### <center>--by wang liyao <center> ###
 
 # agenda 
 
@@ -25,12 +25,12 @@ introduction: we will reveal python basic knowledge
 - Work in Python
 - Stdandard Type
 - python operators
-- <font color=gray size=6 face=“黑体”>Basic program</font>
-- <font color=gray size=6 face=“黑体”>Function</font>
-- <font color=gray size=6 face=“黑体”>Python file I/O</font>
-- <font color=gray size=6 face=“黑体”>Regular Expression</font>
-- <font color=gray size=6 face=“黑体”>class</font>
-- Q&A
+- Basic program
+- Function
+- Python file I/O
+- Regular Expression
+- class
+- Reference
 
 
 
@@ -990,39 +990,6 @@ The above result is the outcome of following AND (‘&’) operation.
 ![_auto_0](attachment:_auto_0)
 
 
-## Reference
-
-* http://www.techbeamers.com/python-operators-tutorial-beginners/
-* https://docs.python.org/2/library/inspect.html
-
-
-## Q & A
-
-# Python Basic 2
-
-![python](https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg)
-### <center>--by wang liyao (leo.y.wang@nokia-sbell.com)<center> ###
-
-# agenda 
-
-- <font color=gray size=6 face=“黑体”>Python History.</font>
-- <font color=gray size=6 face=“黑体”>Why Python?</font>
-- <font color=gray size=6 face=“黑体”>Work in Python</font>
-- <font color=gray size=6 face=“黑体”>Stdandard Type</font>
-- <font color=gray size=6 face=“黑体”>python operators</font>
-- Basic program
-- Function
-- Python file I/O
-- Regular Expression
-- class
-- Exercise
-- Q&A
-
-
-
-
-
-
 ## Basic program
 - variables
 - condition expresson
@@ -1069,10 +1036,69 @@ print id(C), C
 
 ```
 
-    43979640 {'1': [1, 2, 3, 6], 'dict': {'walrus': 'morse'}, 'dog': 'Kitty'}
-    43979640 {'1': [1, 2, 3, 6], 'dict': {'walrus': 'morse'}, 'dog': 'Kitty'}
-    43981816 {'1': [1, 2, 3, 6], 'dict': {'walrus': 'morse'}, 'dog': 'chien'}
-    
+Before understanding shallow and deep copies, first understand how variables are stored in Python;
+The type of a variable is a binary reference and an address reference.
+All of python's variables are objects, the storage of variables, the way the address is referenced, the memory address that the value of a variable is stored, not the only one of the variable itself.
+
+![_auto_0](attachment:_auto_0)
+
+```python
+ >>> str_1 = 'abc'
+ >>> id(str_1)
+ 4300773168
+ >>> str_2 = str_1
+ >>> id(str_2)
+ 4300773168
+```
+![_auto_0](attachment:_auto_0)
+
+```
+>>> str_1 = 123
+>>> id(str_2)
+ 4300773168
+>>> id(str_1)
+4297541792
+```
+![_auto_0](attachment:_auto_0)
+
+```python
+>>> list_1 =[1,2,3]
+>>> id(list_1)
+4320183368
+>>> list_1.append(9)
+>>> list_1[2] = 22
+>>> list_1.pop(2)
+3
+>>> print(list_1,id(list_1))
+[1, 2, 22, 5, 6, 9] 4320183368
+```
+![_auto_0](attachment:_auto_0)
+
+
+
+### copy
+浅拷贝: 不管是多么复杂的数据结构，浅拷贝只会拷贝第一层.
+```python
+import copy
+list_1 = [1,2,['a','b','c'],3]
+list_2 = list_1[:]
+# list_2 = copy.copy(list_1)浅拷贝的另一种方式
+list_1[2][1] = 'kk'
+print(list_1,list_2,id(list_1[2]),id(list_2[2]))
+[1, 2, ['a', 'kk', 'c'], 3]  [1, 2, ['a', 'kk', 'c'], 3] 4330513736 4330513736
+```
+![_auto_0](attachment:_auto_0)
+
+### deep copy
+.深拷贝: 深拷贝会完全复制原变量的所有数据，在内存中生成一套完全一样的内容，我们对这两个变量中的一个进行任意修改都不会影响另一个变量。
+```python
+import copy
+list_1 = [1,2,['a','b','c'],3]
+list_2 = copy.deepcopy(list_1)
+list_1[2][1] = 'kk'
+print(list_1,list_2,list_1[2],list_2[2])
+[1, 2, ['a', 'kk', 'c'], 3]  [1, 2, ['a', 'b', 'c'], 3] 4330513736 4330512584
+```
 
 ### Condition Expression
 
@@ -1143,16 +1169,16 @@ else:
 
 
 ```python
-numbers = [1,3,5]
+numbers = [1,3,5, 6]
 position = 0
 while position < len(numbers):
     number = numbers[position]
     if number % 2 == 0:
-        print ‘Found Even number’, number
+        print 'Found Even number', number
         break
     position += 1
 else:
-    print ‘No even number found’
+    print "No even number found"
 
 ```
 
@@ -1173,21 +1199,6 @@ def find_even_number(numbers)
 ```
 
 ### Iterator
-
-
-```python
-numbers = [1,3,5]
-if not find_even_number(numbers):
-    print ‘No even number found’
-
-def find_even_number(numbers)
-    for number in numbers:
-        if number % 2 == 0:
-            print ‘Found Even number’, number
-            return True
-    Return False
-
-```
 
 
 ```python
@@ -1226,6 +1237,1175 @@ print names
 [name for name, value in students.items() if int(value.split(':')[1]) > 18]
 
 ```
+
+## function
+- What is a function in Python?
+- The return statement
+- How Function works in Python?
+- Scope and Lifetime of variables
+- Python Built-in Function
+- Variable Function Arguments
+
+
+
+
+
+
+
+
+### What is a function in Python?
+In Python, function is a group of related statements that perform a specific task.
+
+Functions help break our program into smaller and modular chunks. As our program grows larger and larger, functions make it more organized and manageable.
+
+Furthermore, it avoids repetition and makes code reusable.
+
+
+```python
+def function_name(parameters):
+    """docstring"""
+    statement(s)
+```
+
+### what is function in python?
+
+Above shown is a function definition which consists of following components.
+
+    1. Keyword def marks the start of function header.
+    2. A function name to uniquely identify it. Function naming follows the same rules of writing identifiers in Python.
+    3. Parameters (arguments) through which we pass values to a function. They are optional.
+    4. A colon (:) to mark the end of function header.
+    5. Optional documentation string (docstring) to describe what the function does.
+    6. One or more valid python statements that make up the function body. Statements must have same indentation level (usually 4 spaces).
+    7. An optional return statement to return a value from the function.
+
+### Example of a function
+
+
+```python
+def greet(name):
+	"""This function greets to
+	the person passed in as
+	parameter"""
+	print("Hello, " + name + ". Good morning!")
+```
+
+### How to call a function in python?
+
+Once we have defined a function, we can call it from another function, program or even the Python prompt. To call a function we simply type the function name with appropriate parameters.
+```python
+>>> greet('Paul')
+Hello, Paul. Good morning!
+```
+
+
+### The return statement
+The return statement is used to exit a function and go back to the place from where it was called.
+
+** Syntax of return **
+```python
+return [expression_list]
+```
+This statement can contain expression which gets evaluated and the value is returned. If there is no expression in the statement or the return statement itself is not present inside a function, then the function will return the None object.
+
+For example:
+```python
+>>> print(greet("May"))
+Hello, May. Good morning!
+None
+```
+	
+Here, None is the returned value.
+
+
+```python
+# example of return
+def absolute_value(num):
+	"""This function returns the absolute
+	value of the entered number"""
+
+	if num >= 0:
+		return num
+	else:
+		return -num
+
+# Output: 2
+print(absolute_value(2))
+
+# Output: 4
+print(absolute_value(-4))
+```
+
+### How Function works in Python?
+
+![python-how-function-works_1.jpg](attachment:python-how-function-works_1.jpg)
+
+### Scope and Lifetime of variables
+
+Scope of a variable is the portion of a program where the variable is recognized. Parameters and variables defined inside a function is not visible from outside. Hence, they have a local scope.
+
+Lifetime of a variable is the period throughout which the variable exits in the memory. The lifetime of variables inside a function is as long as the function executes.
+
+They are destroyed once we return from the function. Hence, a function does not remember the value of a variable from its previous calls.
+
+Here is an example to illustrate the scope of a variable inside a function.
+
+
+```python
+def my_func():
+	x = 10
+	print("Value inside function:",x)
+
+x = 20
+my_func()
+print("Value outside function:",x)
+```
+
+### Python Built-in Function
+The Python interpreter has a number of functions that are always available for use. These functions are called built-in functions. For example, print() function prints the given object to the standard output device (screen) or to the text stream file.
+
+In Python 3.6 (latest version), there are 68 built-in functions. They are listed below alphabetically along with brief description.
+
+https://www.programiz.com/python-programming/methods/built-in
+
+### Variable Function Arguments
+
+Function arguments can have default values in Python.
+
+We can provide a default value to an argument by using the assignment operator (=). Here is an example.
+
+```python
+def greet(name, msg = "Good morning!"):
+   """
+   This function greets to
+   the person with the
+   provided message.
+
+   If message is not provided,
+   it defaults to "Good
+   morning!"
+   """
+
+   print("Hello",name + ', ' + msg)
+
+greet("Kate")
+greet("Bruce","How do you do?")
+```
+
+
+In this function, the parameter name does not have a default value and is required (mandatory) during a call.
+
+On the other hand, the parameter msg has a default value of "Good morning!". So, it is optional during a call. If a value is provided, it will overwrite the default value.
+
+Any number of arguments in a function can have a default value. But once we have a default argument, all the arguments to its right must also have default values.
+
+This means to say, non-default arguments cannot follow default arguments. For example, if we had defined the function header above as:
+```python
+def greet(msg = "Good morning!", name):
+```
+We would get an error as:
+```python
+SyntaxError: non-default argument follows default argument
+```
+    
+
+#### Python Keyword Arguments
+
+Python allows functions to be called using keyword arguments. When we call functions in this way, the order (position) of the arguments can be changed. Following calls to the above function are all valid and produce the same result.
+```python
+>>> # 2 keyword arguments
+>>> greet(name = "Bruce",msg = "How do you do?")
+
+>>> # 2 keyword arguments (out of order)
+>>> greet(msg = "How do you do?",name = "Bruce") 
+
+>>> # 1 positional, 1 keyword argument
+>>> greet("Bruce",msg = "How do you do?") 
+```
+As we can see, we can mix positional arguments with keyword arguments during a function call. But we must keep in mind that keyword arguments must follow positional arguments.
+
+#### Python Arbitrary Arguments
+
+Sometimes, we do not know in advance the number of arguments that will be passed into a function.Python allows us to handle this kind of situation through function calls with arbitrary number of arguments.
+
+In the function definition we use an asterisk (*) before the parameter name to denote this kind of argument. Here is an example.
+
+
+```python
+def greet(*names):
+   """This function greets all
+   the person in the names tuple."""
+
+   # names is a tuple with arguments
+   for name in names:
+       print("Hello",name)
+
+greet("Monica","Luke","Steve","John")
+```
+
+
+```python
+def greet_main(salutatory, *names):
+    print(salutatory)
+    greet(*names)
+
+
+def greet(*names):
+   """This function greets all
+   the person in the names tuple."""
+
+   # names is a tuple with arguments
+   for name in names:
+       print("Hello",name)
+
+greet_main("welcome", "Monica","Luke","Steve","John")
+
+name_list = ("welcome", "wang","leo","li","yao")
+greet(*name_list)
+
+```
+
+### **kwargs
+
+
+```python
+
+def foo(arg1, *tupleArg, **dictArg):
+    print "arg1=",arg1          #arg1=leason
+    print "tupleArg=",tupleArg  #()
+    print "dictArg=",dictArg    #[]
+foo("leason", 'python', 'shell', 'ruby', duration=1.5, trainer='leo')
+```
+
+
+```python
+# 接收不定长参数**kwargs
+def fun_var_kwargs(arg1, **kwargs):  
+    print "arg1:", arg1  
+    for key in kwargs:  
+        print "%s: %s" % (key, kwargs[key])
+fun_var_kwargs(arg1=1, arg2=2, arg3=3) # **kwargs可以当作容纳多个key和value的dict
+
+kwargs = {"arg_3": -3, "arg_2": -2} # dictionary
+fun_var_kwargs(-1, **kwargs)  
+
+```
+
+## Python file I/O
+
+- What is a file?
+- How to open a file?
+- How to close a file Using Python?
+- How to write to File Using Python?
+- How to read files in Python?
+- Python File Methods
+
+### what is a file
+
+File is a named location on disk to store related information. It is used to permanently store data in a non-volatile memory (e.g. hard disk).
+
+Since, random access memory (RAM) is volatile which loses its data when computer is turned off, we use files for future use of the data.
+
+When we want to read from or write to a file we need to open it first. When we are done, it needs to be closed, so that resources that are tied with the file are freed.
+
+Hence, in Python, a file operation takes place in the following order.
+
+    1. Open a file
+    2. Read or write (perform operation)
+    3. Close the file
+
+### How to open a file?
+Python has a built-in function open() to open a file. This function returns a file object, also called a handle, as it is used to read or modify the file accordingly.
+```python
+>>> f = open("test.txt")    # open file in current directory
+>>> f = open("C:/Python33/README.txt")  # specifying full path
+```
+
+We can specify the mode while opening a file. In mode, we specify whether we want to read 'r', write 'w' or append 'a' to the file. We also specify if we want to open the file in text mode or binary mode.
+
+The default is reading in text mode. In this mode, we get strings when reading from the file.
+
+On the other hand, binary mode returns bytes and this is the mode to be used when dealing with non-text files like image or exe files.
+
+
+<table border="1">
+	<caption>Python File Modes</caption>
+	<tbody>
+		<tr>
+			<th>Mode</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>&#39;r&#39;</td>
+			<td>Open a file for reading. (default)</td>
+		</tr>
+		<tr>
+			<td>&#39;w&#39;</td>
+			<td>Open a file for writing. Creates a new file if it does not exist or truncates the file if it exists.</td>
+		</tr>
+		<tr>
+			<td>&#39;x&#39;</td>
+			<td>Open a file for exclusive creation. If the file already exists, the operation fails.</td>
+		</tr>
+		<tr>
+			<td>&#39;a&#39;</td>
+			<td>Open for appending at the end of the file without truncating it. Creates a new file if it does not exist.</td>
+		</tr>
+		<tr>
+			<td>&#39;t&#39;</td>
+			<td>Open in text mode. (default)</td>
+		</tr>
+		<tr>
+			<td>&#39;b&#39;</td>
+			<td>Open in binary mode.</td>
+		</tr>
+		<tr>
+			<td>&#39;+&#39;</td>
+			<td>Open a file for updating (reading and writing)</td>
+		</tr>
+	</tbody>
+</table>
+
+r只读，r+读写，不创建
+
+w新建只写，w+新建读写，二者都会将文件内容清零
+
+（以w方式打开，不能读出。w+可读写）
+
+w+与r+区别：
+
+r+：可读可写，若文件不存在，报错；w+: 可读可写，若文件不存在，创建
+
+r+与a+区别：
+r+进行了覆盖写。以a,a+的方式打开文件，附加方式打开
+
+```python
+fd = open("1.txt",'w+')  
+fd.write('123')  
+fd = open("1.txt",'r+')  
+fd.write('456')  
+fd = open("1.txt",'a+')  
+fd.write('789')
+# output 456789
+```
+
+```python
+f = open("test.txt")      # equivalent to 'r' or 'rt'
+f = open("test.txt",'w')  # write in text mode
+f = open("img.bmp",'r+b') # read and write in binary mode
+```
+
+Moreover, the default encoding is platform dependent. In windows, it is 'cp1252' but 'utf-8' in Linux.
+
+So, we must not also rely on the default encoding or else our code will behave differently in different platforms.
+
+Hence, when working with files in text mode, it is highly recommended to specify the encoding type.
+```python
+f = open("test.txt",mode = 'r',encoding = 'utf-8')
+```
+
+### How to close a file Using Python?
+
+When we are done with operations to the file, we need to properly close the file.
+
+Closing a file will free up the resources that were tied with the file and is done using Python close() method.
+
+Python has a garbage collector to clean up unreferenced objects but, we must not rely on it to close the file.
+
+
+```python
+
+f = open("test.txt",encoding = 'utf-8')
+# perform file operations
+f.close()
+
+```
+
+This method is not entirely safe. If an exception occurs when we are performing some operation with the file, the code exits without closing the file.
+
+A safer way is to use a try...finally block.
+```python
+try:
+   f = open("test.txt",encoding = 'utf-8')
+   # perform file operations
+finally:
+   f.close()
+```
+
+This way, we are guaranteed that the file is properly closed even if an exception is raised, causing program flow to stop.
+
+The best way to do this is using the with statement. This ensures that the file is closed when the block inside with is exited.
+
+We don't need to explicitly call the close() method. It is done internally.
+
+```python
+with open("test.txt",encoding = 'utf-8') as f:
+   # perform file operations
+```
+
+### How to write to File Using Python?
+
+We need to be careful with the 'w' mode as it will overwrite into the file if it already exists. All previous data are erased.
+
+Writing a string or sequence of bytes (for binary files) is done using write() method. This method returns the number of characters written to the file.
+
+```python
+with open("test.txt",'w',encoding = 'utf-8') as f:
+   f.write("my first file\n")
+   f.write("This file\n\n")
+   f.write("contains three lines\n")
+```
+This program will create a new file named 'test.txt' if it does not exist. If it does exist, it is overwritten.
+
+We must include the newline characters ourselves to distinguish different lines.
+
+
+### How to read files in Python?
+To read a file in Python, we must open the file in reading mode.
+
+There are various methods available for this purpose. We can use the read(size) method to read in size number of data. If size parameter is not specified, it reads and returns up to the end of the file.
+
+
+```python
+>>> f = open("test.txt",'r',encoding = 'utf-8')
+>>> f.read(4)    # read the first 4 data
+'This'
+
+>>> f.read(4)    # read the next 4 data
+' is '
+
+>>> f.read()     # read in the rest till end of file
+'my first file\nThis file\ncontains three lines\n'
+
+>>> f.read()  # further reading returns empty sting
+''
+```
+
+We can change our current file cursor (position) using the seek() method. Similarly, the tell() method returns our current position (in number of bytes).
+
+
+```python
+>>> f.tell()    # get the current file position
+56
+
+>>> f.seek(0)   # bring file cursor to initial position
+0
+
+>>> print(f.read())  # read the entire file
+This is my first file
+This file
+contains three lines
+```
+
+### We can read a file line-by-line using a for loop. This is both efficient and fast.
+
+
+```python
+
+>>> for line in f:
+...     print line,
+...
+This is my first file
+This file
+contains three lines
+
+```
+
+The lines in file itself has a newline character '\n'.
+
+Moreover, the print() end parameter to avoid two newlines when printing.
+
+Alternately, we can use readline() method to read individual lines of a file. This method reads a file till the newline, including the newline character
+
+
+```python
+>>> f.readline()
+'This is my first file\n'
+
+>>> f.readline()
+'This file\n'
+
+>>> f.readline()
+'contains three lines\n'
+
+>>> f.readline()
+''
+```
+
+Lastly, the readlines() method returns a list of remaining lines of the entire file. All these reading method return empty values when end of file (EOF) is reached.
+
+
+```python
+
+>>> f.readlines()
+['This is my first file\n', 'This file\n', 'contains three lines\n']
+
+```
+
+### Python File Methods
+<table border="1">
+	<caption>Python File Methods</caption>
+	<tbody>
+		<tr>
+			<th>Method</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>close()</td>
+			<td>Close an open file. It has no effect if the file is already closed.</td>
+		</tr>
+		<tr>
+			<td>detach()</td>
+			<td>Separate the underlying binary buffer from the <code>TextIOBase</code> and return it.</td>
+		</tr>
+		<tr>
+			<td>fileno()</td>
+			<td>Return an integer number (file descriptor) of the file.</td>
+		</tr>
+		<tr>
+			<td>flush()</td>
+			<td>Flush the write buffer of the file stream.</td>
+		</tr>
+		<tr>
+			<td>isatty()</td>
+			<td>Return <code>True</code> if the file stream is interactive.</td>
+		</tr>
+		<tr>
+			<td>read(<var>n</var>)</td>
+			<td>Read atmost <var>n</var> characters form the file. Reads till end of file if it is negative or <code>None</code>.</td>
+		</tr>
+		<tr>
+			<td>readable()</td>
+			<td>Returns <code>True</code> if the file stream can be read from.</td>
+		</tr>
+		<tr>
+			<td>readline(<var>n</var>=-1)</td>
+			<td>Read and return one line from the file. Reads in at most <var>n</var> bytes if specified.</td>
+		</tr>
+		<tr>
+			<td>readlines(<var>n</var>=-1)</td>
+			<td>Read and return a list of lines from the file. Reads in at most <var>n</var> bytes/characters if specified.</td>
+		</tr>
+		<tr>
+			<td>seek(<var>offset</var>,<var>from</var>=<code>SEEK_SET</code>)</td>
+			<td>Change the file position to <var>offset</var> bytes, in reference to <var>from</var> (start, current, end).</td>
+		</tr>
+		<tr>
+			<td>seekable()</td>
+			<td>Returns <code>True</code> if the file stream supports random access.</td>
+		</tr>
+		<tr>
+			<td>tell()</td>
+			<td>Returns the current file location.</td>
+		</tr>
+		<tr>
+			<td>truncate(<var>size</var>=<code>None</code>)</td>
+			<td>Resize the file stream to <var>size</var> bytes. If <var>size</var> is not specified, resize to current location.</td>
+		</tr>
+		<tr>
+			<td>writable()</td>
+			<td>Returns <code>True</code> if the file stream can be written to.</td>
+		</tr>
+		<tr>
+			<td>write(<var>s</var>)</td>
+			<td>Write string <var>s</var> to the file and return the number of characters written.</td>
+		</tr>
+		<tr>
+			<td>writelines(<var>lines</var>)</td>
+			<td>Write a list of <var>lines</var> to the file.</td>
+		</tr>
+	</tbody>
+</table>
+
+## Regular Expression
+- Special Character
+- Regular Expression with Python
+- Match vs search
+- sub
+- Repeat, special character
+- compile
+- greedy and non-greedy
+
+
+### Special Character
+![_auto_0](attachment:_auto_0)
+
+### Special Character
+![_auto_0](attachment:_auto_0)
+
+### Re module
+- Compile  
+    compile(pattern,flags=0) 
+    parse pattern return regular object
+- Match  
+    match(pattern,string, flags=0)
+- Search  
+    search(pattern,string, flags=0)
+- Findall  
+    findall(pattern,string[,flags]) 
+    return a match obj list
+- Sub 
+    sub(pattern, repl, string, max=0)
+- Groups  
+    groups() 
+    return all match elements in a tuple
+
+
+### match VS search
+```python
+>>>M = re.match(“foo”, “foo”)
+>>>if m is not None:
+…        m.group()                           #’foo’
+>>> m =re.match(‘foo’, ‘food on the table’)  #match succeed
+>>> m.group()                               #’foo’
+>>>m = re.search(‘foo’, ‘seafood’).group()
+>>>m = re.match(‘foo’, ‘seafood’).group()
+
+```
+
+### Sub  and subn
+```python
+>>>re.sub('X', 'Mr. Smith', 'attn: X\n\nDear X,\n’)
+'attn: Mr. Smith\012\012Dear Mr. Smith,\012’
+
+>>>re.subn('X', 'Mr. Smith', 'attn: X\n\nDear X,\n')
+('attn: Mr. Smith\012\012Dear Mr. Smith,\012', 2)
+
+>>>print re.sub('X', 'Mr. Smith', 'attn: X\n\nDear X,\n')
+attn: Mr. Smith
+Dear Mr. Smith,
+>>> re.sub('[ae]', 'X', 'abcdef')
+```
+
+
+### repeat, special character
+```python
+>>> patt = '\w+@(\w+\.)?\w+\.com'
+>>> re.match(patt, 'nobody@xxx.com').group()
+'nobody@xxx.com'
+>>> re.match(patt, 'nobody@www.xxx.com').group()
+‘’nobody@www.xxx.com’
+
+>>> patt = '\w+@(\w+\.)*\w+\.com'
+>>> re.match(patt, 'nobody@www.xxx.yyy.zzz.com').group()
+'nobody@www.xxx.yyy.zzz.com'
+```
+
+### compile
+use compile
+```python
+import re
+some_text = 'a, b,,,,c d'
+reObj = re.compile('[, ]+')
+reObj.split(some_text)
+```
+not use compile
+```python
+import re
+some_text = 'a,b,,,,c d'
+re.split('[, ]+',some_text)
+```
+
+### greedy and non-greedy
+- Regular expressions are usually used to find matching strings in text.In Python, the quantifiers are greedy (or, in a few languages, non-greedy), always trying to match as many characters as possible;Non-greed, on the other hand, always tries to match as few characters as possible.In the "*", "?","+","{m,n}", plus?To turn greed into non-greed.
+
+
+```python
+
+import re
+s="This is a number 234-235-22-423"
+r=re.match(".+(\d+-\d+-\d+-\d+)",s)
+print r.group(1)
+
+r = re.match(".+?(\d+-\d+-\d+-\d+)",s)
+print r.group(1)
+
+#reObj = re.compile('.+?(\d+-\d+-\d+-\d+)')
+#print reObj.match(s).group(1)
+
+```
+
+
+```python
+
+import re
+print re.match(r"aa(\d+)","aa2343ddd").group(1)
+print re.match(r"aa(\d+?)","aa2343ddd").group(1)
+print re.match(r"aa(\d+)ddd","aa2343ddd").group(1) 
+print re.match(r"aa(\d+?)ddd","aa2343ddd").group(1)
+
+```
+
+## class
+- Class Definition
+- Inheritance
+- variable
+- Encapsulation
+- Polymorphism
+- Special  Properties
+
+
+### Class definition
+```python
+class Account(object):
+  def __init__(self,name,balance):
+    self.name = name
+    self.balance = balance
+  
+  def deposit(self,amt):
+    self.balance = self.balance + amt
+  
+  def withdraw(self,amt):
+    self.balance = self.balance - amt
+a = Account(“Guido", 5000.00)
+print a.balance
+a.deposit(200)
+print a.balance
+
+```
+
+### Inheritance
+
+Inheritance is a way of creating new class for using details of existing class without modifying it. The newly formed class is a derived class (or child class). Similarly, the existing class is a base class (or parent class).
+
+
+```python
+# Use of Inheritance in Python
+
+# parent class
+class Bird(object):
+    
+    def __init__(self):
+        print("Bird is ready")
+
+    def whoisThis(self):
+        print("Bird")
+
+    def swim(self):
+        print("Swim faster")
+
+# child class
+class Penguin(Bird):
+
+    def __init__(self):
+        # call super() function
+        super(Penguin, self).__init__()
+        print("Penguin is ready")
+
+    def whoisThis(self):
+        print("Penguin")
+
+    def run(self):
+        print("Run faster")
+
+peggy = Penguin()
+peggy.whoisThis()
+peggy.swim()
+peggy.run()
+```
+
+### Multi-Inheritance
+
+
+```python
+class P1(): 
+   def foo(self):           
+       print 'p1-foo' 
+ 
+class P2(): 
+   def foo(self): 
+       print 'p2-foo' 
+
+   def bar(self): 
+       print 'p2-bar' 
+ 
+class C1 (P1, P2): 
+   pass  
+ 
+class C2 (P1, P2): 
+   def bar(self): 
+       print 'C2-bar'   
+ 
+class D(C1, C2): 
+   pass 
+
+d=D() 
+d.foo() # 输出 p1-foo 
+d.bar() # 输出 p2-bar 
+
+#实例d调用foo()时，搜索顺序是 D => C1 => P1
+#实例d调用bar()时，搜索顺序是 D => C1 => P1 => P2
+#换句话说，经典类的搜索方式是按照“从左至右，深度优先”的方式去查找属性。d先查找自身是否有foo方法，没有则查找最近的父类C1里是否有该方法，如果没有则继续向上查找，直到在P1中找到该方法，查找结束
+```
+
+
+```python
+class P1(object): 
+   def foo(self):           
+       print 'p1-foo' 
+ 
+class P2(object): 
+   def foo(self): 
+       print 'p2-foo' 
+   def bar(self): 
+       print 'p2-bar' 
+ 
+class C1 (P1,P2): 
+   pass  
+ 
+class C2 (P1,P2): 
+   def bar(self): 
+       print 'C2-bar'   
+ 
+class D(C1,C2): 
+   pass 
+
+d=D() 
+d.foo() # 输出 p1-foo 
+d.bar() # 输出 p2-bar
+
+# 实例d调用foo()时，搜索顺序是 D => C1 => C2 => P1
+# 实例d调用bar()时，搜索顺序是 D => C1 => C2
+# 可以看出，新式类的搜索方式是采用“广度优先”的方式去查找属性。
+
+```
+
+### variable
+- class variable
+- instance variable
+- local variable
+- private variable
+- protect variable
+
+
+
+
+```python
+class Account(object):
+  bank_blance = 0                     # class variable
+
+  def __init__(self, name, balance, age=30):
+      self._name = name
+      self.__age = age
+      self.balance = balance
+      Account.bank_blance += self.balance
+
+  def deposit(self,amt):
+      self.balance = self.balance + amt
+      Account.bank_blance += amt
+
+  def withdraw(self,amt):
+      self.balance = self.balance - amt
+      Account.bank_blance -= self.balance
+
+  def get_age(self):
+      return self.__age
+
+a = Account('Guido', 5000.00)
+print "guido's balance:", a.balance
+print "bank blance:", Account.bank_blance
+a.deposit(200)
+print "guido's balance:", a.balance
+print 'bank blance:', Account.bank_blance
+
+b = Account('leo', 50.00)
+print "leo's balance:", b.balance
+print "bank blance:", Account.bank_blance
+a.deposit(20)
+print "leo's balance:", b.balance
+print 'bank blance:', Account.bank_blance
+print b._name   # instance can visit protect variable
+try:
+    print b.__age  # instance can't visit piravte variable
+except AttributeError:
+    print 'AttributeError'
+print 'get age:', b.get_age()
+
+```
+
+
+```python
+class Account(object):
+  bank_blance = 0                     # class variable
+
+  def __init__(self, name, balance, age=30):
+      self._name = name
+      self.__age = age
+      self.balance = balance
+      Account.bank_blance += self.balance
+
+  def deposit(self,amt):
+      self.balance = self.balance + amt
+      Account.bank_blance += amt
+
+  def withdraw(self,amt):
+      self.balance = self.balance - amt
+      Account.bank_blance -= self.balance
+
+  def __set_vip(self):
+      print 'account vip'
+
+  def _get_age(self):
+      print 'get self.__age:',self.__age
+      return self.__age
+
+class ChinaBankAccount(Account):
+
+    def __init__(self, id, name, balance, age):
+       super(ChinaBankAccount, self).__init__(name, balance, age)
+       self.__id = id
+
+    def get_id(self):
+        print 'child can visit parent _name:', self._name
+        self._name = "wang"
+        print 'after modify:', self._name
+        self.__age = '31'
+        print 'after modify __age:', self.__age
+        try:
+            self.__set_vip()   # can't visit parent's __ method
+        except AttributeError:
+            print 'AttributeError'    
+        return self.__id
+
+    #def __set_vip(self):
+    #    print 'ChinaBankAccount vip'
+
+china_bank_customer =  ChinaBankAccount(1001, 'leo', 1000, 30)
+print china_bank_customer._name
+print china_bank_customer.get_id()
+print china_bank_customer._get_age()  #not recommend , _ means is not API
+
+
+```
+
+
+```python
+class A(object):
+
+        def __init__(self, x):
+                self.__a = 2
+                self.x = x
+
+        def __b(self):
+                self.x = 3
+        def __c__(self):
+            print 'self.x:',self.x
+
+a = A(2)
+print a.x
+print a.__c__()
+```
+
+
+```python
+class A(object): 
+    def __method(self): 
+        print "I'm a method in A" 
+    def method(self): 
+        self.__method()
+a = A() 
+a.method()
+
+class B(A): 
+    def __method(self): 
+        print "I'm a method in B" 
+
+b = B() 
+b.method()
+b._B__method()  # never use this!! please!
+
+```
+
+### Encapsulation
+
+Using OOP in Python, we can restrict access to methods and variables. This prevent data from direct modification which is called encapsulation. In Python, we denote private attribute using underscore as prefix i.e single “ _ “ or double “ __“.
+
+
+```python
+class Computer:
+
+    def __init__(self):
+        self.__maxprice = 900
+
+    def sell(self):
+        print("Selling Price: {}".format(self.__maxprice))
+
+    def setMaxPrice(self, price):
+        self.__maxprice = price
+
+c = Computer()
+c.sell()
+
+# change the price
+c.__maxprice = 1000
+c.sell()
+
+# using setter function
+c.setMaxPrice(1000)
+c.sell()
+```
+
+In the above program, we defined a class Computer. We use __init__() method to store the maximum selling price of computer. We tried to modify the price. However, we can’t change it because Python treats the __maxprice as private attributes. To change the value, we used a setter function i.e setMaxPrice() which takes price as parameter.
+
+### Polymorphism
+
+Polymorphism is an ability (in OOP) to use common interface for multiple form (data types).
+
+Suppose, we need to color a shape, there are multiple shape option (rectangle, square, circle). However we could use same method to color any shape. This concept is called Polymorphism.
+
+
+```python
+class Parrot:
+
+    def fly(self):
+        print("Parrot can fly")
+    
+    def swim(self):
+        print("Parrot can't swim")
+
+# class Penguin:''[]
+
+    def fly(self):
+        print("Penguin can't fly")
+    
+    def swim(self):
+        print("Penguin can swim")
+
+# common interface
+def flying_test(bird):
+    bird.fly()
+
+#instantiate objects
+blu = Parrot()
+peggy = Penguin()
+
+# passing the object
+flying_test(blu)
+flying_test(peggy)
+```
+
+In the above program, we defined two classes Parrot and Penguin. Each of them have common method fly() method. However, their functions are different. To allow polymorphism, we created common interface i.e flying_test() function that can take any object. Then, we passed the objects blu and peggy in the flying_test() function, it ran effectively.
+
+
+
+### Special  Properties
+
+
+__name__ 
+__doc__ 
+__bases__
+__dict__
+__module__ 
+__class__ 
+__init__
+__new__
+__del__
+__str__
+
+
+
+
+```python
+
+class TestClass(object):
+    """this is test class"""
+    def __str__(self):
+        return "Test!"
+test = TestClass()
+print "this is {}".format(test)
+print TestClass.__name__
+print TestClass.__doc__, TestClass.__name__, TestClass.__bases__
+print test.__doc__, test.__class__
+
+```
+
+
+```python
+class TestClass(object):
+    """this is test class"""
+    def __str__(self):
+        return "Test!"
+
+    def output(self):
+        print self.__doc__, self.__str__, self.__class__
+    
+test = TestClass()
+test.output()
+```
+
+#### what is __new__ 
+
+
+```python
+class Person(object):
+    """Silly Person"""
+ 
+    def __new__(cls, name, age):
+        print '__new__ called.'
+        return super(Person, cls).__new__(cls, name, age)
+ 
+    def __init__(self, name, age):
+        print '__init__ called.'
+        self.name = name
+        self.age = age
+ 
+    def __str__(self):
+        return '<Person: %s(%s)>' % (self.name, self.age)
+ 
+if __name__ == '__main__':
+    piglei = Person('piglei', 24)
+    print piglei
+```
+
+
+```python
+class PositiveInteger(int):
+    def __init__(self, value):
+        super(PositiveInteger, self).__init__(self, abs(value))
+ 
+i = PositiveInteger(-3)
+print i
+```
+
+
+```python
+class PositiveInteger(int):
+    def __new__(cls, value):
+        return super(PositiveInteger, cls).__new__(cls, abs(value))
+ 
+i = PositiveInteger(-3)
+print i
+```
+
+####   \__new\__  usage scenario
+
+
+```python
+class Singleton(object):
+    def __new__(cls):
+        # 关键在于这，每一次实例化的时候，我们都只会返回这同一个instance对象
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(Singleton, cls).__new__(cls)
+        return cls.instance
+ 
+obj1 = Singleton()
+obj2 = Singleton()
+ 
+obj1.attr1 = 'value1'
+print obj1.attr1, obj2.attr1
+print obj1 is obj2
+```
+
+## Reference
+
+* http://www.techbeamers.com/python-operators-tutorial-beginners/
+* https://docs.python.org/2/library/inspect.html
+* https://www.programiz.com/python-programming/
+* http://python.jobbole.com/86506/
+* https://www.cnblogs.com/nomorewzx/p/4203829.html
+* https://blog.csdn.net/drdairen/article/details/51134816
+* https://www.cnblogs.com/yizhenfeng168/p/6985020.html
+
 
 
 
