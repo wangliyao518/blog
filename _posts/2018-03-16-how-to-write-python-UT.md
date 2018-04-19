@@ -122,6 +122,52 @@ if __name__ == "__main__":
 ```
 
 
+## patch
+
+we also can use patch to write UT case like below:
+
+```python
+import re
+
+
+class FsmAccess(object):
+
+    def __init__(self, connection):
+        self._con = connection
+
+    def con(self):
+	    return self._con
+
+    def get_lmp_ip_address(self):
+        result = ""
+        stderr, stdout = self.con.exec_command("ifconfig eth3")
+        pattern = r"(\d{1,4}.\d{1,4}.\d{1,4}.\d{1,4})"
+        for line in stdout.split('\n'):
+            ret = re.search(pattern, line)
+            if ret:
+                result = ret.groups()[0]
+        return result
+
+
+import unittest
+from fsm import FsmAccess
+from mock import Mock, patch
+
+
+class TestKissConfigInterface(unittest.TestCase):
+
+
+    @patch('fsm.FsmAccess.con')
+    def test_get_lmp_ip_add_patch(self, con_mock):
+        con_mock.exec_command.return_value = (0, 'eth3      Link encap:Ethernet  HWaddr 00:0F:BB:BA:99:CD  \ninet addr:10.0.2.2  Bcast:10.0.2.255  Mask:255.255.255.0\nUP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1\nRX packets:0 errors:0 dropped:0 overruns:0 frame:0\nTX packets:16 errors:0 dropped:0 overruns:0 carrier:0\ncollisions:0 txqueuelen:1000\nRX bytes:0 (0.0 B)  TX bytes:1152 (1.1 KiB)')
+        fsm_instance = FsmAccess(con_mock)
+        ret = fsm_instance.get_lmp_ip_address()
+        self.assertEqual(ret, '10.0.2.2')
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
 
 
 -----
