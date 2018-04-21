@@ -17,11 +17,13 @@ introduction: Robot itself is also a programming language. It is a language for 
 
 ## requirement
 implement a keyword to execute shell command on remote linux pc
+
 实现一个可以在远程linux系统的pc上执行shell 命令的keyword
 
 
 ## Procedural programming 
 it's a very simple requirement, we can implement this task easily with procedural programming
+
 上面的需求非常简单, 我们可以用面向过程的方式简单的实现, 代码如下:
 
 ```python
@@ -114,6 +116,7 @@ def execute_local_command(cmd):
 
 ## Object Oriented Programming
 the above code can work well, and it seems we only change a little code after new requirement comming, but there have a problem that is user only want change local pc execute command logical but also change the execute command on remote host code, so after we change code we need test the get_ethernet_ip_address keyword in two scenario (local and remote), how about use OOP to implement the above feature? let's see the code
+
 上面的代码可以很好的工作, 看上去新的需求来后我们也只是很少的改动就可以实现功能, 但这里有一个问题:用户只是希望get_ethernet_ip_address这个keyword在本地执行时不需要ssh, 但我们确也改动了在remote执行的部分(有的人可能会说,我远程执行没改动啊, 还是调用的execute_shell_command啊, 但加入if else后就代表着这个代码已有改动,更何况python是动态脚本语言),所以在我们的代码改动后, 我们需要测试本地和远程两种场景.如果换成面向对象会怎么样? 请看代码
 
 ```python
@@ -185,6 +188,7 @@ class SshConnection(object):
 
 ```
 we just use 3 class to implement this requirement, when user want local command not need ssh we only need add one class, the code as below:
+
 上面就是我们用OOP之后写的代码,代码行数是多了,我们同时用了3个类来完成这个任务, 当本地执行命令不需要ssh时,我们只需要增加一个class, 代码如下
 
 ```python

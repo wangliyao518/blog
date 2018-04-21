@@ -17,13 +17,16 @@ introduction: Write a robot keyword have add, subtract, multiply and divide is e
 ## what's ATDD
 
 - First, ATDD is not a test methodology, but a development methodology
+
 首先，ATDD不是一种测试方法论，而是一种开发方法论。
 
 - The people involved in UTDD are just developers, so does ATDD involve testers only?No, products, development, and testing all need to be involved in ATDD
+
 UTDD涉及的人员仅仅是开发人员，那么ATDD仅仅涉及测试人员吗？不是，产品、开发、测试都需要参与到ATDD中来。
 
-- Team need to demand in the ATDD activities define the desired quality standards and acceptance conditions, in order to make clear and agreed acceptance test plan (including a series of test scenarios) to drive the product development and test script code.在
-ATDD活动中团队需要就需求定义出期望的质量标准和验收细则，以明确而且达成共识的验收测试计划（包含一系列测试场景）来驱动产品的代码开发和测试脚本开发。
+- Team need to demand in the ATDD activities define the desired quality standards and acceptance conditions, in order to make clear and agreed acceptance test plan (including a series of test scenarios) to drive the product development and test script code.
+
+在ATDD活动中团队需要就需求定义出期望的质量标准和验收细则，以明确而且达成共识的验收测试计划（包含一系列测试场景）来驱动产品的代码开发和测试脚本开发。
 
 - ATDD must be based on test automation and continuous integration.ATDD一定是基于测试自动化和持续集成的。
 
@@ -58,10 +61,12 @@ just like TDD 'red-green-refactor', ATDD also have similar process(see above). �
 
 ## first write robot case
 The easier it is, the easier it is to say, let's start with the simplest example of adding and subtracting the calculator.Don't think it's too easy, just sit back, and you'll find out what's going on with us. You can't even write such a small program, so you have a lot of bugs in your hands?
+
 **越简单越能说明问题, 我们从最简单的加减乘除计算器例子开始, 不要以为它太简单, 耐着性子往后看, 你会发现我们是怎么回事, 连这么小的程序都写不好, 亲手产生了好多的bug**
 
 
 The user's requirement is to write a calculator keyword with addition and subtraction and multiplication.
+
 用户的需求就是写一个加减乘除的计算器keyword
 
 ok, let's start create robot case first, the robot case should like below:
@@ -137,9 +142,12 @@ def operate_fun(a, b, oper):
 ```
 Everything looks very simple, UT pass, robot case can pass. 一切看上去都非常的简单, UT pass了, robot case也可以pass了
 
-But often the bug is often reveal out between our negligence, actually this is not simple, only we put it to anything to do, also will be more beautiful, otherwise may be terrible. 但往往"大意失荆州", bug往往也是在我们疏忽之间流露出去的, 其实这个真不简单, 任何事情只有我们把它用心来做了,也才会更加的美丽,不然可能糟糕透了
+But often the bug is often reveal out between our negligence, actually this is not simple, only we put it to anything to do, also will be more beautiful, otherwise may be terrible.
+
+但往往"大意失荆州", bug往往也是在我们疏忽之间流露出去的, 其实这个真不简单, 任何事情只有我们把它用心来做了,也才会更加的美丽,不然可能糟糕透了
 
 The above case looks like UT is covered enough, and the robot case function coverage seems to be also available. Do they all pass the pass to make sure there are no bugs?Not too!In fact, the above code has leaked a lot of bugs in our eyes, so let me add a few cases to you.
+
 上面的case看上去UT 覆盖够了, robot case功能覆盖好像也有了, 他们都pass了就真的保证了没有bug? 非也! 实则上面的代码在我们"众目睽睽" 之下流出了很多bug, 让我随便给你增加几个case看看
 
 ```robot
@@ -159,9 +167,11 @@ Test calculator addition example 3
 ```
 
 Try my new test case, how about the result? Are we too careless? In fact, I can write a lot of test cases, and I can test a lot of bugs. I don't want to continue to elaborate in this blog, anyone interesting can try to add more case to find the more bugs
+
 试试我run新增加的测试用例, 结果怎么样? 怎么样?　我们是不是太过大意呢？ 其实还可以写很多测试用例出来, 还可以测试出很多的bug, 我不想在这个bug中继续阐述, 有兴趣的同学可以自行脑补
 
 With bugs, we have ATDD and TDD without fear of modifying the code, which is the benefit of ATDD and TDD, and for bugs, we add test cases.
+
 出现了bug, 我们有ATDD 和TDD 就不用担心害怕修改代码, 这就是ATDD和TDD的好处, 针对bug, 我们增补测试用例
 
 上面的robot case已经增加了, 我们这里好像也可以不用增加python部分的UT代码,它好似已经覆盖了. 勤快点的同学可以增加下UT代码, 如下:
@@ -203,12 +213,15 @@ Test calculator addition example 3
 ```
 
 You will find that the problem is again, the user's usage scenario is a normal scene, we have no reason to oppose him, all right!With ATDD and TDD, we can continue to add UT and modify the source code, so we can continue to play with the above method. I will not continue to write for the time being.
+
 你会发现, 问题又出现了, 用户的这个使用场景是一个正常的场景, 我们没理由反对他, 好吧! 有了ATDD和TDD, 我们可以继续增加UT 和修改源码, 我们就可以继续按刚才上面方式玩下去. 我暂时不继续写下去.
 
 TDD and ATDD actually also one of the great benefits when we refactor our code with quality assurance, this is a safety belt, we source for procedural too much, we should think of some way to get it object oriented, or to add an operation such as a new type need to change the main code
+
 其实TDD 和ATDD的一大好处还有当我们重构我们的代码时 有了质量上的保证, 这就是一个保险带, 我们上面的源码太面向过程化了, 我们应该想办法让它面向对象, 不然比如新增加一种运算类型时都需要去改主题
 
 With this ATDD, we can refactor this source code and let's it's more clean code, and I'm going to introduce it in another article.
+
 有了这个ATDD ,如何把这个源码写得更clean code, 我准备在另外一篇文章中介绍
 
 -----
