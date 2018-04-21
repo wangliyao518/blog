@@ -168,6 +168,62 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
+- The majority of patch usage scenarios.
+some people may like source code like below:
+
+```
+import paramiko
+class FsmAccess(object):
+
+    def __init__(self):
+        pass
+
+    def connect(self, host, port, username, password):
+        self.con = paramiko.SSHClient()
+        self.con.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        self.con.connect(host, port, username, password)
+
+    def get_lmp_ip_address(self):
+        result = ""
+        stderr, stdout = self.con.exec_command("ifconfig eth3")
+        pattern = r"(\d{1,4}.\d{1,4}.\d{1,4}.\d{1,4})"
+        for line in stdout.split('\n'):
+            ret = re.search(pattern, line)
+            if ret:
+                result = ret.groups()[0]
+        return result
+
+    def disconnect(self):
+        self.con.close()
+
+```
+
+I don't want to say whether this code write good enough, I just want talk how to use patch and to test connect function, I write the UT case like below:
+我不想来评断上面代码是否写的够好, 我只是来谈谈这么使用patch, 以及如何来测试这个connect函数(get_lmp_ip_address已经讲过, 下面就比再写了)
+```python
+
+import unittest
+from mock import Mock, patch
+
+
+class TestFsm(unittest.TestCase):
+
+
+    @patch('paramiko.SSHClient.set_missing_host_key_policy')
+    @patch('paramiko.SSHClient.connect')
+    def test_connect(self, con_mock, set_missing_host_key_policy_mock):
+        fsm_instance = FsmAccess()
+        fsm_instance.connect('127.0.0.1', 22, 'ute', 'ute')
+        fsm_instance.con.set_missing_host_key_policy.assert_called()
+        fsm_instance.con.connect.assert_called_with('127.0.0.1', 22, 'ute', 'ute')
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+```
+Connect function in the absence of any of the above logic encapsulation, so UT code meaning is not very big, actually we do on the other hand is for the sake of coverage, but on the other hand are in order to guarantee the function call part of the key move not easily, the patch function is simple, the inside of the patch parameters is the statement we need to replace the function of "path", it will be in the corresponding def replaced by parameter represents the object in the test function, we didn't do this case parameters of any assignment or statement, so it is none
+上面的connect函数由于没有任何的逻辑封装,所以UT代码其实意义不是很大, 我们确实一方面是为了覆盖率, 其实另外一方面也是为了保证这个函数关键的调用部分不被别人轻易移调, patch函数也很简单, patch里面的参数就是声明我们需要替代掉的函数'路径', 它会被对应def中测试函数中参数代表的对象所替换, 我们这个例子中参数没做任何的赋值或者声明, 所以它就是none
 
 
 -----
