@@ -175,6 +175,97 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
+
+What is the reuslt if we directly use patch for the _con attribute above code?
+
+如果我们对上述代码中的_con属性直接用patch 会是什么样的结果?
+
+```python
+import re
+
+
+class FsmAccess(object):
+
+    def __init__(self, connection):
+        self._con = connection
+
+    # def con(self):
+	   #  return self._con
+
+    def get_lmp_ip_address(self):
+        result = ""
+        stderr, stdout = self._con.exec_command("ifconfig eth3")
+        pattern = r"(\d{1,4}.\d{1,4}.\d{1,4}.\d{1,4})"
+        for line in stdout.split('\n'):
+            ret = re.search(pattern, line)
+            if ret:
+                result = ret.groups()[0]
+        return result
+
+
+import unittest
+from mock import Mock, patch
+
+
+class TestKissConfigInterface(unittest.TestCase):
+
+
+    @patch('__main__.FsmAccess._con')
+    def test_get_lmp_ip_add_patch(self, con_mock):
+        con_mock.exec_command.return_value = (0, 'eth3      Link encap:Ethernet  HWaddr 00:0F:BB:BA:99:CD  \ninet addr:10.0.2.2  Bcast:10.0.2.255  Mask:255.255.255.0\nUP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1\nRX packets:0 errors:0 dropped:0 overruns:0 frame:0\nTX packets:16 errors:0 dropped:0 overruns:0 carrier:0\ncollisions:0 txqueuelen:1000\nRX bytes:0 (0.0 B)  TX bytes:1152 (1.1 KiB)')
+        fsm_instance = FsmAccess(con_mock)
+        ret = fsm_instance.get_lmp_ip_address()
+        self.assertEqual(ret, '10.0.2.2')
+
+if __name__ == "__main__":
+    unittest.main()
+```
+The above code will report the following error.
+
+上面代码会报下面的错
+
+
+
+```python
+  File "C:\Python27\lib\site-packages\mock\mock.py", line 1369, in __enter__
+    original, local = self.get_original()
+  File "C:\Python27\lib\site-packages\mock\mock.py", line 1343, in get_original
+    "%s does not have the attribute %r" % (target, name)
+AttributeError: <class '__main__.FsmAccess'> does not have the attribute '_con'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+```
+
+In fact, you only need to add a parameter to the patch in the test function can pass.
+
+
+其实只需要在测试函数中的patch里面加一个参数就可以pass
+
+```python
+
+import unittest
+from mock import Mock, patch
+
+
+class TestKissConfigInterface(unittest.TestCase):
+
+
+    @patch('__main__.FsmAccess._con', create=True)
+    def test_get_lmp_ip_add_patch(self, con_mock):
+        con_mock.exec_command.return_value = (0, 'eth3      Link encap:Ethernet  HWaddr 00:0F:BB:BA:99:CD  \ninet addr:10.0.2.2  Bcast:10.0.2.255  Mask:255.255.255.0\nUP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1\nRX packets:0 errors:0 dropped:0 overruns:0 frame:0\nTX packets:16 errors:0 dropped:0 overruns:0 carrier:0\ncollisions:0 txqueuelen:1000\nRX bytes:0 (0.0 B)  TX bytes:1152 (1.1 KiB)')
+        fsm_instance = FsmAccess(con_mock)
+        ret = fsm_instance.get_lmp_ip_address()
+        self.assertEqual(ret, '10.0.2.2')
+
+if __name__ == "__main__":
+    unittest.main()
+
+```
+
+
+
 - The majority of patch usage scenarios.
 some people may like source code like below:
 
@@ -233,6 +324,31 @@ if __name__ == "__main__":
 Connect function in the absence of any of the above logic encapsulation, so UT code meaning is not very big, actually we do on the other hand is for the sake of coverage, but on the other hand are in order to guarantee the function call part of the key move not easily, the patch function is simple, the inside of the patch parameters is the statement we need to replace the function of "path", it will be in the corresponding def replaced by parameter represents the object in the test function, we didn't do this case parameters of any assignment or statement, so it is none
 
 上面的connect函数由于没有任何的逻辑封装,所以UT代码其实意义不是很大, 我们确实一方面是为了覆盖率, 其实另外一方面也是为了保证这个函数关键的调用部分不被别人轻易移调, patch函数也很简单, patch里面的参数就是声明我们需要替代掉的函数'路径', 它会被对应def中测试函数中参数代表的对象所替换, 我们这个例子中参数没做任何的赋值或者声明, 所以它就是none
+
+
+But the example above, there's a problem, if we mistakenly write assert_called_with, you'll find that the use case is still pass. in order to solve this problem, we need to write the above code as follows.
+
+但上面的例子, 有一个问题, 如果我们手误把assert_called_with写错, 你也会发现这个用例依旧是pass, 为了解决这个问题, 我们需要把上面的代码写成下面的样子
+
+
+```python
+
+
+import unittest
+from mock import Mock, patch
+
+
+class TestFsm(unittest.TestCase):
+
+
+    @patch('paramiko.SSHClient.set_missing_host_key_policy')
+    @patch('paramiko.SSHClient', autospec=True)
+    def test_connect(self, con_mock, set_missing_host_key_policy_mock):
+        fsm_instance = FsmAccess()
+        fsm_instance.connect('127.0.0.1', 22, 'ute', 'ute')
+        fsm_instance.con.set_missing_host_key_policy.assert_called()
+        con_mock.return_value.connect.assert_called_with('127.0.0.1', 22, 'ute', 'ute')
+```
 
 
 -----
