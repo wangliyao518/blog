@@ -244,6 +244,59 @@ class Interface(object):
 上面的代码我们虽然用字典的方式消除掉了if else语句, 但细心的读者会发现,我们之前的面向过程其实也可以用这个字典方式消除掉if else, 而我们的面向对象好像代码更长呢? 那它究竟的好处是什么呢? 从上面的面向过程和面向对象我们能清晰的看出, 我们需求变动的是ssh连接的变化, 而通过连接去执行对应命令和解析这块算法的地方是不需要变化的, 但面向过程中导致了这块地方也跟着变动了, 如果有了UT代码,这部分也需要跟着变化的,我们的需求不需要这块变动,显然是不合理的. 而面向对象后, 我们明显应对变化更灵活了,这就是OOP的好处!
 
 
+
+## one kill processes example
+
+上面的代码相对于robot 来说还算是"底层"的robot keyword代码了, 底层代码应该OOP, 这个应该是大多人都非常认可的. 我们再来看一个稍微上一层"用户层面"keyword的例子.
+假设用户有一个需求, 就是要实现一个kill 进程的keyword, 参数应该就是"进程名"的参数列表.
+需求很容易, 经验丰富的我们很容易就实现了代码
+```python
+import subbprocess
+def kill_process(*process_list):
+    for each_process in process_list:
+        ppid = subprocess.check_output('ps -ef |grep {}'.format(each_process))
+        ret = subbprocess.call('kill - 9 {}'.format(ppid))
+
+```
+
+
+## another capture logs example
+
+再举一个抓各种log的例子, 假设我们已经有了各种抓log的底层keyword, 但有一天用户有一个需求, 是要求提供一个common的抓各种log的keyword, 这些log包含有syslog, ttitrace的log, aamessage的log. (syslog, ttitrace, aamessage log 由于都是数据流形式, 所以分别有start和stop两个对应的keyword).
+
+由于几种log 都已经有对应的底层keyword, 我们很容易就实现了这个common的功能, 伪代码如下:
+
+```python
+
+def start_capture_common_logs(syslog=True, ttitrace=True, aatrace=True):
+    start_syslog(syslog_save_path)
+    start_ttitrace(ttitrace_save_path)
+    start_aaMessageTrace(aatrace_save_path)
+
+def stop_capture_common_logs():
+    stop_syslog()
+    stop_ttitrace()
+    stop_aaMessageTrace()    
+
+```
+
+非常简单,我们很快就实现了需求,而且只要底层的几个start和sop keyword能够正常工作, 上面的common keyword也就可以正常工作.
+我们现现在来稍微改变下需求, 由于aatrace消息底层的keyword是提供了message 过滤的profile文件, 可能每个component关心的message是不一样的, 也就是不同component的用户需要提供不同的profile文件.
+按照面向过程式编程, 我们很容易写出如下的代码
+```python
+def start_capture_common_logs(syslog=True, ttitrace=True, aatrace=True, aatrace_profile=default_profile.txt):
+    start_syslog()
+    start_ttitrace()
+    start_aaMessageTrace(aatrrace_profile)
+
+```
+
+看上去实现也非常的容易, 我们只是增加了参数然后传入了底层的函数就实现了对应的功能, 但这里有一个问题, 我们发现前面的3个参数都是布尔类型, 都是用户可通过这个来置是否要抓对应的log, 而最后一个参数很前面几个不是一类, 而且最后一个参数究竟对应前面那个的proflie呢? 我们只有通过名字来区分. 如果有一天syslog也有profile, 我们也只能取一个profile名字, 而且调用时千万不能误调用.  
+
+
+
+
+
 -----
 
 Want to see something else added? <a href="https://github.com/wangliyao518/blog/issues/new">Open an issue.</a>
