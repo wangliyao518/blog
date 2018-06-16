@@ -254,9 +254,65 @@ class Interface(object):
 import subbprocess
 def kill_process(*process_list):
     for each_process in process_list:
-        ppid = subprocess.check_output('ps -ef |grep {}'.format(each_process))
-        ret = subbprocess.call('kill - 9 {}'.format(ppid))
+        ppid = subprocess.check_output("ps -ef |grep {} |grep -v grep |awk -F ' ' '{print $2}'".format(each_process))
+        ret = subbprocess.call('sudo kill - 9 {}'.format(ppid))
 
+```
+
+有一天, 我们用户想通过这个keyword 去kill kibana进程, 通过传入kibana发现没生效. 事后我们发现原来kibana进程名字不叫kibana而是叫node. 于是我们修改上面的代码如下
+
+```python
+import subbprocess
+def kill_process(*process_list):
+    for each_process in process_list:
+        if each_p_process == 'kibana':
+            each_process = 'node'
+        ppid = subprocess.check_output("ps -ef |grep {} |grep -v grep |awk -F ' ' '{print $2}'".format(each_process))
+        ret = subbprocess.call('sudo kill - 9 {}'.format(ppid))
+```
+好像微小的改动就实现了我们的功能, 但上面代码有一个问题, 就是所有的其它进程名也都会先判断进程名是否等于"kibana", 为了这个kibana的例外, 我们代码块中增加了代码, 这个代码是影响着所有的process, 如果还有其它的一些例外进程, 我们会在这个代码块中增加很多的elif语句.
+
+好的, 我们把代码改成如下:
+
+```python
+import subbprocess
+
+class Process(object):
+    def __init__(self, name):
+        self.process_name = name
+    def pid(self):
+        return subprocess.check_output("ps -ef |grep {} |grep -v grep |awk -F ' ' '{print $2}'".format(process_name))
+    def start(self):
+        pass
+    def stop(self):
+        subbprocess.call('sudo kill - 9 {}'.format(self.pid))
+
+class KibanaProcess(object):
+    
+    def __init__(self, name):
+        self.process_nme = 'node'
+
+class ProcessFactory(object):
+    
+    def get_process_instant(self, name):
+        if name == "kibana":
+            return KibanaProcess(name)
+        return Process(name)
+        
+
+class ProcessControl(object):
+    
+    def __init__(self, process_name_list):
+        self.ppid = None
+        self.process_name_list = process_name_list
+
+    def stop(self):
+        for process_name in self.process_name_list:
+            ProcessFactory().get_process_instant(process_name).stop()
+
+def kill_process(*process_list):
+    ProcessControl(process_list).stop()
+                
 ```
 
 
